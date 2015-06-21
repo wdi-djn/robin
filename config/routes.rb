@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :gifts
   resources :users 
   resources :sessions, except: :new
 
@@ -10,6 +11,14 @@ Rails.application.routes.draw do
 end
 
 #       Prefix Verb   URI Pattern                  Controller#Action
+#        gifts GET    /gifts(.:format)             gifts#index
+#              POST   /gifts(.:format)             gifts#create
+#     new_gift GET    /gifts/new(.:format)         gifts#new
+#    edit_gift GET    /gifts/:id/edit(.:format)    gifts#edit
+#         gift GET    /gifts/:id(.:format)         gifts#show
+#              PATCH  /gifts/:id(.:format)         gifts#update
+#              PUT    /gifts/:id(.:format)         gifts#update
+#              DELETE /gifts/:id(.:format)         gifts#destroy
 #        users GET    /users(.:format)             users#index
 #              POST   /users(.:format)             users#create
 #     new_user GET    /users/new(.:format)         users#new
