@@ -1,0 +1,23 @@
+<h1>Sessions#new</h1>
+<p>Find me in app/views/sessions/new.html.erb</p>
+
+<%= form_for @user, url: '/sessions', method: 'post' do |f| %>
+  <% if flash[:error] %>
+    <div id="error_explanation">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.email_field :email, placeholder: 'Email' %>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, placeholder: 'Password' %>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Sign In' %>
+    </div>
+
+<% end %>
