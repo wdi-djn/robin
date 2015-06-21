@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @gift.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @gift.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @gift.price %>
+</p>
+
+<p>
+  <strong>Gift url:</strong>
+  <%= @gift.gift_url %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @gift.due_date %>
+</p>
+
+<p>
+  <strong>Recipient:</strong>
+  <%= @gift.recipient %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @gift.user_id %>
+</p>
+
+<p>
+  <strong>Hashed:</strong>
+  <%= @gift.hashed_id %>
+</p>
+
+<%= link_to 'Edit', edit_gift_path(@gift) %> |
+<%= link_to 'Back', gifts_path %>
