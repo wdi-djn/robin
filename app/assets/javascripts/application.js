@@ -18,6 +18,7 @@
 
 $(document).on("page:change", function() {
   animateForm();
+  // checkActive();
 });
 
 var animateForm = function() {
@@ -31,3 +32,16 @@ var animateForm = function() {
     label.addClass("active");
   });
 };
+
+var checkActive = function() {
+   $("input").each(function(i) {
+    if (this.type == "text" || "email" || "date") {   
+      if (this.value !== "") {
+        var label = $(this).closest("div").find("label");
+        label.addClass("active");
+      }
+    }
+  });
+};
+
+
