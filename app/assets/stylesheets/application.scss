@@ -11,116 +11,15 @@
  * file per style scope.
  *
  *= require normalize-rails
- *= require_tree .
+ *= require main
  *= require_self
  */
 
-@import "susy";
-
-/* Changing Susy default global settings */
-$susy: (
-  /* Tells Susy to use 12 columns */
-  columns: 12,
-  /* Tells Susy that the container has a max-width of 1120px */
-  container: 1200px,
-  container-position: center,
-  /* Tells Susy to use border-box */
-  global-box-sizing: border-box 
-  );
-
-/* Makes border-box properties */
-@include border-box-sizing;
 
 
-// GLOBAL
-$navbar-height: 75px;
-$menu-width: span(3);
-$light-gray: #E6E6E7;
-$border: 1px solid $light-gray;
 
-ul, li {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
 
-.content {
-  @include container;
-}
 
-// NAV
-.navbar {
-  width: 100%;
-  position: fixed;
-  top: 0;
-  height: $navbar-height;
-  background-color: rgba(255,255,255,0.90);
-  border-bottom: $border;
-  z-index: 999;
-}
-
-.navbar .main {
-  @include container;
-  position: relative;
-  display: flex; 
-  height: 100%;
-}
-
-.menu-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1em;
-  // width: $navbar-height; // square ratio
-  height: $navbar-height;
-  border-right: $border;
-  border-left: $border;
-}
-
-.menu li {
-  padding: 2em 0;
-}
-
-.menu {
-  position: absolute;
-  top: 0;
-  right: - $menu-width;
-  width: $menu-width;
-  height: 100vh;
-}
-.home-button {
-  position: absolute;
-  top: 0;
-  left: 0;
-  padding: 0 1em;
-  height: 100%;
-  border-right: $border;
-  border-left: $border;   
-}
-
-.site-wrapper.show-menu .site-canvas {
-  -webkit-transform: translateX(- $menu-width);
-  transform: translateX(- $menu-width);
-}
-
-// off canvas setup
-.site-wrapper {
-  @include span(12);
-  position: relative;
-  top: $navbar-height;
-  overflow: hidden;
-  
-  height: 100vh;
-}
-
-.site-canvas {
-  @include span(12);
-  position: absolute;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
-}
 
 
 

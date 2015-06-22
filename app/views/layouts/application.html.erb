@@ -18,7 +18,7 @@
     <li>
       <div class="menu-button">
         <% if current_user %> 
-          <h2<a href="#">Menu</a></h2>
+          <h2><a href="#">Menu</a></h2>
         <% else %>
           <h2><a href="#">Sign In</a></h2>
         <% end %>
@@ -31,23 +31,25 @@
   <div class="site-canvas">
     <!-- OFF CANVAS MENU STARTS -->
     <ul class="menu open">
-      <% if current_user == nil %>
-          <%= render partial: '/sessions/form' %>
-        <li>
-          <%= link_to "Create Account", new_user_path %>    
-        </li>
-      <% else %>
-        <li>
-          <%= link_to "Gift Groups", gifts_path %>
-        </li>
-        <li>  
-          <%= link_to "Create Gift Group", new_gift_path %>
-        </li>
-        <li>
-          <%= link_to "Sign Out", sign_out_path, method: 'delete'  %>  
-        </li>
-      <% end %>
-    </ul>    
+      <div class="content">
+        <% if current_user == nil %>
+            <%= render partial: '/sessions/form' %>
+          <li>
+            <%= link_to "Create Account", new_user_path %>    
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Gift Groups", gifts_path %>
+          </li>
+          <li>  
+            <%= link_to "Create Gift Group", new_gift_path %>
+          </li>
+          <li>
+            <%= link_to "Sign Out", sign_out_path, method: 'delete'  %>  
+          </li>
+        <% end %>
+        </div> 
+    </ul>   
     <!-- OFF CANVAS MENU ENDS -->
     <!-- MAIN CONTENT STARTS -->
     <div class="content">
