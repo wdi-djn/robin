@@ -44,5 +44,16 @@ group :development, :test do
 
   # Rspec testing
   gem 'rspec-rails', '~> 3.0.0'
+
+  # Factory girl for using factories instead of fixtures
+  gem 'factory_girl_rails'
+
+  # Capybara to mimic browser interactions for testing
+  gem 'capybara'
+
+  # Will generate dummy data
+  gem 'ffaker'
+
+
 end
 
