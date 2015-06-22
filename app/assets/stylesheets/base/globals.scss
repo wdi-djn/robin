@@ -21,8 +21,13 @@ $susy: (
 
 
 // COLORS
+$main: #333;
+$white: #FFF;
 $light-gray: #E6E6E7;
 
+
+// BORDERS
+$border: 1px solid $light-gray;
 
 // LISTS
 ul, li {

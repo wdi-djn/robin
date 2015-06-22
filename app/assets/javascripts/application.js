@@ -14,3 +14,15 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).on("page:change", function() {
+  animateForm();
+});
+
+var animateForm = function() {
+  $("input").focus(function() {
+    var label = $(this).closest("div").find("label");
+    label.addClass("active");
+  });
+};
