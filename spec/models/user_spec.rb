@@ -88,12 +88,10 @@ describe User do
 	end
 
 	# class method testing
-	# Cant get this test to work yet- test on sessions?
-	# describe ".confirm" do
-	# 	it "trys to authenticate a user based on params" do
-	# 	user = FactoryGirl.build(:user)
-	# 	expect(user).to respond_to(:confirm)
-	# 	end
-	# end
+	describe ".confirm" do
+		it "responds to User class" do
+		expect(User).to respond_to(:confirm)
+		end
+	end
 
 end
