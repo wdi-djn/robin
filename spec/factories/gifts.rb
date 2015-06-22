@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :gift do
   	title { FFaker::Lorem.sentence(5)}
   	description { FFaker::Lorem.paragraph}
-  	price { 10.99 }
+  	price { ((1000.0) * rand).round(2) }
   	gift_url { FFaker::Internet.http_url}
   	due_date { FFaker::Time.date}
   	recipient { FFaker::Name.name}
@@ -16,7 +16,7 @@ FactoryGirl.define do
   	association :user
   	title { FFaker::Lorem.sentence(5)}
   	description { FFaker::Lorem.paragraph}
-  	price { 10.99 }
+  	price { ((1000.0) * rand).round(2) }
   	gift_url { FFaker::Internet.http_url}
   	due_date { FFaker::Time.date}
   	recipient { FFaker::Name.name}
