@@ -9,16 +9,18 @@
 <body>
 
 <nav class="navbar">
-  <ul>
+  <ul class="main">
     <li>
-      <h1><%= link_to "Home", root_path %></h1>
+      <div class="home-button">
+        <h1><%= link_to "Home", root_path %></h1>
+      </div>
     </li> 
     <li>
       <div class="menu-button">
         <% if current_user %> 
-          <a href="#">Menu</a>
+          <h2<a href="#">Menu</a></h2>
         <% else %>
-          <a href="#">Sign In</a>
+          <h2><a href="#">Sign In</a></h2>
         <% end %>
       </div>    
     </li>
@@ -27,7 +29,7 @@
 
 <div class="site-wrapper">
   <div class="site-canvas">
-    <!-- START OF OFF CANVAS MENU -->
+    <!-- OFF CANVAS MENU STARTS -->
     <ul class="menu open">
       <% if current_user == nil %>
           <%= render partial: '/sessions/form' %>
@@ -46,12 +48,14 @@
         </li>
       <% end %>
     </ul>    
-    <!-- END OF OFF CANVAS MENU -->
-
-    <%= yield %>
+    <!-- OFF CANVAS MENU ENDS -->
+    <!-- MAIN CONTENT STARTS -->
+    <div class="content">
+      <%= yield %>
+    </div>
+    <!-- MAIN CONTENT ENDS -->
   </div>
 </div>
 
-  <% console %>
 </body>
 </html>
