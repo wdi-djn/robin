@@ -1,5 +1,5 @@
 // VARIABLES
-$navbar-height: 75px;
+$navbar-height: 50px;
 $menu-width: span(12);
 
 
@@ -43,11 +43,9 @@ $menu-width: span(12);
   // width: $menu-width;
   height: 100vh;
 }
+
 .home-button {
   position: absolute;
-  top: 0;
-  left: 0;
-  // padding: 0 1em;
   height: 100%;
   // border-right: $border;
   // border-left: $border;   
@@ -81,10 +79,14 @@ $menu-width: span(12);
   text-decoration: none;
 }
 
+.main .home-button h1 {
+  font-size: 1.7em;
+  margin-top: .3em;
+}
 
-
-
-
+.main h2 {
+  margin-top: 1em;
+}
 
 
 
