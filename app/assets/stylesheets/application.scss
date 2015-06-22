@@ -10,8 +10,108 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require normalize-rails
  *= require_tree .
  *= require_self
  */
 
 @import "susy";
+
+/* Changing Susy default global settings */
+$susy: (
+  /* Tells Susy to use 12 columns */
+  columns: 12,
+  /* Tells Susy that the container has a max-width of 1120px */
+  container: 1120px,
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box 
+  );
+
+/* Makes border-box properties */
+@include border-box-sizing;
+
+
+// GLOBAL
+$navbar-height: 75px;
+$menu-width: span(3);
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+// NAV
+.navbar {
+  @include span(12);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: $navbar-height;
+  background-color: rgba(255,255,255,0.95);
+  z-index: 999;
+  .menu-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $navbar-height; // square ratio
+    height: 100%;
+  }
+}
+
+.menu li {
+  padding: 2em 0;
+}
+
+.menu {
+  @include span(3 last);
+  position: absolute;
+  top: 0;
+  right: - $menu-width;
+  width: $menu-width;
+  height: 100vh;
+  background-color: #999;
+}
+
+.site-wrapper.show-menu .site-canvas {
+  -webkit-transform: translateX(- $menu-width);
+  transform: translateX(- $menu-width);
+}
+
+// CONTENT
+.site-wrapper {
+  position: relative;
+  top: $navbar-height;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+.site-canvas {
+  width: 100%;
+  position: absolute;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: .3s ease all;
+  transition: .3s ease all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

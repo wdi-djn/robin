@@ -7,8 +7,51 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render partial: '/layouts/navbar' %>
-<%= yield %>
-<% console %>
+
+<nav class="navbar">
+  <ul>
+    <li>
+      <h1><%= link_to "Home", root_path %></h1>
+    </li> 
+    <li>
+      <div class="menu-button">
+        <% if current_user %> 
+          <a href="#">Menu</a>
+        <% else %>
+          <a href="#">Sign In</a>
+        <% end %>
+      </div>    
+    </li>
+  </ul>
+</nav>
+
+<div class="site-wrapper">
+  <div class="site-canvas">
+    <!-- START OF OFF CANVAS MENU -->
+    <ul class="menu open">
+      <% if current_user == nil %>
+          <%= render partial: '/sessions/form' %>
+        <li>
+          <%= link_to "Create Account", new_user_path %>    
+        </li>
+      <% else %>
+        <li>
+          <%= link_to "Gift Groups", gifts_path %>
+        </li>
+        <li>  
+          <%= link_to "Create Gift Group", new_gift_path %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", sign_out_path, method: 'delete'  %>  
+        </li>
+      <% end %>
+    </ul>    
+    <!-- END OF OFF CANVAS MENU -->
+
+    <%= yield %>
+  </div>
+</div>
+
+  <% console %>
 </body>
 </html>
