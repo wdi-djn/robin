@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_many :gifts
+  has_many :contributions
+  
   has_secure_password
 
   validates :first_name, presence: true
