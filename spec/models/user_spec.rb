@@ -1,0 +1,97 @@
+ # User schema for reference
+ # create_table "users", force: :cascade do |t|
+ #    t.string   "first_name"
+ #    t.string   "last_name"
+ #    t.string   "username"
+ #    t.string   "email"
+ #    t.string   "password_digest"
+ #    t.datetime "created_at",      null: false
+ #    t.datetime "updated_at",      null: false
+ #  end
+
+require 'rails_helper'
+
+describe User do
+
+	# checks to see if a valid user can be built
+	it "has a valid factory" do
+		expect(FactoryGirl.build(:user)).to be_valid
+	end
+
+	# checks that nil user data is invalid
+	context "when user input is nil" do
+
+		it "is invalid without a first_name" do
+			user = FactoryGirl.build(:user, first_name: nil)
+			user.valid?
+			expect(user.errors[:first_name]).to include("can't be blank")
+		end
+
+		it "is invalid without a last_name" do
+			user = FactoryGirl.build(:user, last_name: nil)
+			user.valid?
+			expect(user.errors[:last_name]).to include("can't be blank")
+		end
+
+		it "is invalid without a username" do
+			user = FactoryGirl.build(:user, username: nil)
+			user.valid?
+			expect(user.errors[:username]).to include("can't be blank")
+		end
+
+		it "is invalid without a email" do
+			user = FactoryGirl.build(:user, email: nil)
+			user.valid?
+			expect(user.errors[:email]).to include("can't be blank")
+		end
+
+		it "is invalid without a password" do
+			user = FactoryGirl.build(:user, password: nil)
+			user.valid?
+			expect(user.errors[:password]).to include("can't be blank")
+		end
+	end
+
+	context "when username is created" do
+		it "must be unique" do
+			FactoryGirl.create(:user, username: "jeremybrenner")
+			user = FactoryGirl.build(:user, username: "jeremybrenner")
+			user.valid?
+			expect(user.errors[:username]).to include("has already been taken")	
+		end
+	end
+
+	# check email validations, context built for future tests
+	context "when user email is created" do
+		it "must be unique" do
+			FactoryGirl.create(:user, email: "jeremybrenner@gmail.com")
+			user = FactoryGirl.build(:user, email: "jeremybrenner@gmail.com")
+			user.valid?
+			expect(user.errors[:email]).to include("Email already in use")	
+		end	
+
+		it "doesnt pass regex if format is invalid" do
+			user = FactoryGirl.build(:user, email: "jeremybrenner@@gmail.com")
+			user.valid?
+			expect(user.errors[:email]).to include("is invalid")
+		end	
+	end
+
+	# check password validations, context built for future tests
+	# note: confirmation is not checked here
+	context "when a password is created" do
+		it "is invalid if not at least 6 characters long" do
+			user = FactoryGirl.build(:user, password: "five")
+			user.valid?
+			expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+		end
+	end
+
+	# class method testing
+	describe ".confirm" do
+		it "responds to User class" do
+		expect(User).to respond_to(:confirm)
+		end
+	end
+
+end
