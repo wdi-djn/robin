@@ -14,7 +14,7 @@ require 'rails_helper'
 describe User do
 
 	# checks to see if a valid user can be built
-	it "has a valid factory" do
+	it "factory builds a valid User" do
 		expect(FactoryGirl.build(:user)).to be_valid
 	end
 

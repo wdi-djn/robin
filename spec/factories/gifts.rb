@@ -1,25 +1,27 @@
- # create_table "gifts", force: :cascade do |t|
- #    t.string   "title"
- #    t.text     "description"
- #    t.decimal  "price"
- #    t.string   "gift_url"
- #    t.datetime "due_date"
- #    t.string   "recipient"
- #    t.integer  "user_id"
- #    t.string   "hashed_id"
- #    t.datetime "created_at",  null: false
- #    t.datetime "updated_at",  null: false
- #  end
-
 FactoryGirl.define do
+
+  # a factory for a gift without an associated user
   factory :gift do
   	title { FFaker::Lorem.sentence(5)}
   	description { FFaker::Lorem.paragraph}
-  	price { FFaker::}
-  	gift_url { FFaker::}
-  	due_date { FFaker::}
-  	recipient { FFaker::}
-  	user_id { FFaker::}
-  	hashed_id { FFaker::}
+  	price { 10.99 }
+  	gift_url { FFaker::Internet.http_url}
+  	due_date { FFaker::Time.date}
+  	recipient { FFaker::Name.name}
+  	hashed_id { gift_url }
   end
+
+  # a factory for a gift that already has relationship to a user
+  factory :gift_with_user, parent: :gift do
+  	association :user
+  	title { FFaker::Lorem.sentence(5)}
+  	description { FFaker::Lorem.paragraph}
+  	price { 10.99 }
+  	gift_url { FFaker::Internet.http_url}
+  	due_date { FFaker::Time.date}
+  	recipient { FFaker::Name.name}
+  	hashed_id { gift_url }
+  end
+
+
 end
