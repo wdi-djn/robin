@@ -22,7 +22,7 @@ textarea {
 label {
   position: absolute;
   left: .6em;
-  top: 1.8em;
+  top: .7em;
   color: rgba(0,0,0,0.5);
   transition: all 0.12s ease;
   -webkit-backface-visibility: hidden;
@@ -31,9 +31,17 @@ label {
   margin: 0;
 }
 
+#date label {
+  top: - 1.5em;
+}
+
+#date.field {
+  margin-top: 2.5em; 
+}
+
 .field {
   position: relative;
-  margin-top: 1.3em;
+  margin-top: 1.6em;
 }
 
 .actions {
@@ -42,7 +50,7 @@ label {
 }
 
 .field .active {
-  -webkit-transform: translateX(-.6em) translateY(-1.9em);
-  transform: translateX(-.6em) translateY(-1.9em);
+  -webkit-transform: translateX(-.6em) translateY(-2.1em);
+  transform: translateX(-.6em) translateY(-2.1em);
   font-size: .8em;
 }

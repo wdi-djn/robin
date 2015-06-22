@@ -47,10 +47,10 @@ $menu-width: span(12);
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 1em;
+  // padding: 0 1em;
   height: 100%;
-  border-right: $border;
-  border-left: $border;   
+  // border-right: $border;
+  // border-left: $border;   
 }
 
 .site-wrapper.show-menu .site-canvas {
@@ -75,3 +75,16 @@ $menu-width: span(12);
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
 }
+
+.main a {
+  color: $main;
+  text-decoration: none;
+}
+
+
+
+
+
+
+
+

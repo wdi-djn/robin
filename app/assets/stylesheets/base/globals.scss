@@ -19,7 +19,6 @@ $susy: (
 /* Makes border-box properties */
 @include border-box-sizing;
 
-
 // COLORS
 $main: #333;
 $white: #FFF;
@@ -38,4 +37,8 @@ ul, li {
 
 html, body {
   font-size: 16px;
+}
+
+h2 {
+  font-size: 1em;
 }
