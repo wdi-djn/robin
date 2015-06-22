@@ -21,7 +21,12 @@ $(document).on("page:change", function() {
 });
 
 var animateForm = function() {
-  $("input").focus(function() {
+  $("input").one("keypress", function() {
+    var label = $(this).closest("div").find("label");
+    label.addClass("active");
+  });
+
+  $("textarea").one("keypress", function() {
     var label = $(this).closest("div").find("label");
     label.addClass("active");
   });
