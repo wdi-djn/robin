@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # ladnding page should check current_user and redirect to dashboard
   root to: 'users#index'
   get '/sign_in', to: 'sessions#new', as: 'sign_in'
-  get '/sign_in', to: 'sessions#new', as: 'new_session'
+  # get '/sign_in', to: 'sessions#new', as: 'new_session'
   delete '/sessions', to: 'sessions#destroy', as: 'sign_out'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   post '/gifts/:gifts_id/contributions', to: 'contributions#create'
