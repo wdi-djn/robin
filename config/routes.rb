@@ -1,20 +1,15 @@
 Rails.application.routes.draw do
   resources :contributions
   resources :gifts
-  # resources :users 
-  # resources :sessions, except: :new
 
   # change root to landing page
-  # ladnding page should check current_user and redirect to dashboard
+  # landing page should check current_user and redirect to dashboard
   root to: 'users#index'
-  # get '/sign_in', to: 'devise/sessions#new', as: 'new_user_session'
-  # get '/sign_in', to: 'sessions#new', as: 'new_session'
   delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
 
 end
-
 #                   Prefix Verb     URI Pattern                              Controller#Action
 #            contributions GET      /contributions(.:format)                 contributions#index
 #                          POST     /contributions(.:format)                 contributions#create
@@ -33,6 +28,7 @@ end
 #                          PUT      /gifts/:id(.:format)                     gifts#update
 #                          DELETE   /gifts/:id(.:format)                     gifts#destroy
 #                     root GET      /                                        users#index
+#              delete_user DELETE   /users/:id(.:format)                     devise/registrations#destroy
 #         new_user_session GET      /users/sign_in(.:format)                 devise/sessions#new
 #             user_session POST     /users/sign_in(.:format)                 devise/sessions#create
 #     destroy_user_session DELETE   /users/sign_out(.:format)                devise/sessions#destroy
@@ -50,4 +46,4 @@ end
 #                          DELETE   /users(.:format)                         devise/registrations#destroy
 #  user_omniauth_authorize GET|POST /users/auth/:provider(.:format)          omniauth_callbacks#passthru {:provider=>/stripe_connect/}
 #   user_omniauth_callback GET|POST /users/auth/:action/callback(.:format)   omniauth_callbacks#:action
-#                          POST     /gifts/:gifts_id/contributions(.:format) contributions#create
+#        gift_contribution POST     /gifts/:gifts_id/contributions(.:format) contributions#create
