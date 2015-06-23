@@ -35,6 +35,7 @@
     <%= f.label :gift_url %><br>
     <%= f.text_field :gift_url %>
   </div>
+  <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
   <div class="actions">
     <%= f.submit %>
   </div>
