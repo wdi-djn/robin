@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'sessions#new', as: 'sign_in'
   # get '/sign_in', to: 'sessions#new', as: 'new_session'
   delete '/sessions', to: 'sessions#destroy', as: 'sign_out'
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  devise_for :users, :skip => :sessions, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   post '/gifts/:gifts_id/contributions', to: 'contributions#create'
 end
 
