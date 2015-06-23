@@ -23,9 +23,8 @@
         <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <!-- START STRIPE CHECKOUT -->
 
-        <form action="/gifts/:gifts_id/contributions" method="POST">
-        
-        <!-- REPLACE TEST DATA KEY WITH REAL KEY -->
+        <%= form_tag gift_contribution_path, method: :post do %>
+          <!-- REPLACE TEST DATA KEY WITH REAL KEY -->
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key= <%= contribution.user.publishable_key %>
@@ -34,7 +33,7 @@
             data-description="2 widgets ($20.00)"
             data-image="/128x128.png">
           </script>
-        </form>
+        <% end %>
 
         <!-- END STRIPE -->
       </tr>
