@@ -8,7 +8,7 @@ describe Gift do
 	end
 
 	# checks that a User can make a gift and have it saved on itself
-	it "can be made by a user" do
+	it "can be made by a gift" do
 		user = FactoryGirl.create(:user)
 		user.gifts.push(FactoryGirl.create(:gift))
 		expect(user.gifts.count).to be(1)

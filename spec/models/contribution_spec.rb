@@ -4,16 +4,12 @@ describe Contribution do
 
 	# checks the factory can build a valid user
 	it "factory builds a valid Contribution" do
-		expect(FactoryGirl.build(:contribution)).to be_valid
-	end
-
-	it "can be created by a user through a gift" do
-		gift_with_user = FactoryGirl.create(:gift_with_user)
+		expect(FactoryGirl.build(:contribution_user_gift)).to be_valid
 	end
 
 	# creates a contribution for each test
 	before(:each) do
-  		@cont = FactoryGirl.create(:contribution)
+  		@cont = FactoryGirl.create(:contribution_user_gift)
 	end
 
 	# ensures the attributes exist
@@ -44,6 +40,7 @@ describe Contribution do
 		it "user_id is references a valid user" do
 			expect(@cont.user_id).to eq(@cont.user.id)
 		end
+
 	end
 
 end
