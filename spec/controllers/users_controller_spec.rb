@@ -33,7 +33,7 @@ describe UsersController do
 	    	get :new
 	    	expect(assigns(:user)).to be_a_new(User)
 	    end
-	    it "renders the :new template" do
+	    it "renders the :new user template" do
 	    	get :new
 	    	expect(response).to render_template :new
 	    end
