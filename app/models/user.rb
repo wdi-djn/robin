@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   validates :username, presence: true, uniqueness: true
   validates :email, presence: true, uniqueness: true, format: { with: REGEX }, uniqueness: { case_sensistive: false, message: 'Email already in use'}, :on => :create 
-  # validates :password, confirmation: true, length: { minimum: 6 }
+  validates :password, confirmation: true, length: { minimum: 6 }, :on => :create
 
   def self.confirm(params) 
     @user = User.find_by({email: params[:email]})
