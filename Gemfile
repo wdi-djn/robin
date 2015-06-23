@@ -56,6 +56,7 @@ group :development, :test do
 
   gem 'omniauth-stripe-connect'
   gem 'devise'
+  gem 'dotenv-rails'
 
 end
 

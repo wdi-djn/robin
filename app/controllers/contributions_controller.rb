@@ -27,7 +27,7 @@ class ContributionsController < ApplicationController
     @contribution = current_user.contributions.new(contribution_params)
 
     p contribution_params
-    
+
     if @contribution.save 
       redirect_to contributions_path
     else
@@ -75,7 +75,6 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-
       params.require(:contribution).permit(:gift_id, :amount)
     end
 end
