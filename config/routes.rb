@@ -1,14 +1,21 @@
 Rails.application.routes.draw do
+  devise_scope :user do
   resources :contributions
   resources :gifts
 
   # change root to landing page
   # landing page should check current_user and redirect to dashboard
   root to: 'users#index'
+
+  get '/profile/:id', to: 'users#show', as: 'show_user' 
+
   delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+
+
   post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
 
+  end
 end
 #                   Prefix Verb     URI Pattern                              Controller#Action
 #            contributions GET      /contributions(.:format)                 contributions#index
