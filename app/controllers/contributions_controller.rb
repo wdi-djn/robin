@@ -25,12 +25,32 @@ class ContributionsController < ApplicationController
   # POST /contributions.json
   def create
     p 'CREATE CONTRIBUTIONS: should recieve stripe token here'
-    @contribution = Contribution.new(contribution_params)
+    @contribution = Contribution.create(contribution_params)
+
+
+    #secret API KEY here probably have to move it
+    Stripe.api_key = "sk_test_ezz3NJ7FuGJhmrQI8Aujneyw"
 
     # respond_to do |format|
-      if @contribution.save
+      if @contribution
         # format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
         # format.json { render :show, status: :created, location: @contribution }
+
+        p @contribution
+                # raise @contribution.inspect
+        p @contribution.stripeEmail
+          customer = Stripe::Customer.create(
+            :email => @contribution.stripeEmail,
+            :card  => @contribution.stripeToken
+          )
+          charge = Stripe::Charge.create(
+            :customer    => customer.id,
+            :amount      => 2500, #should be @contribution.amount
+            :description => 'Rails Stripe customer',
+            :currency    => 'usd'
+          )
+
+
         redirect_to gifts_path
       else
         # format.html { render :new }

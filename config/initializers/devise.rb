@@ -5,8 +5,8 @@ Devise.setup do |config|
   # DEVISE CONFIG
   config.omniauth :stripe_connect,
       # hardcoded secrets MOVE TO SECRETS!!!
-      'ca_6TaGRUJG2CSFcYezvTt1Kpvng3WIqGXp',
-      'sk_test_mFe23hozP7PVfofrURIPvILp',
+      'ca_6TfO6y4BOaV3YHhurUx6M6hPy5RXox8M',
+      'sk_test_ezz3NJ7FuGJhmrQI8Aujneyw',
       :scope => 'read_write',
       :stripe_landing => 'register'
 
