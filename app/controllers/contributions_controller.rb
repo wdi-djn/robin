@@ -24,34 +24,32 @@ class ContributionsController < ApplicationController
   # POST /contributions
   # POST /contributions.json
   def create
-    p 'CREATE CONTRIBUTIONS: should recieve stripe token here'
-    @contribution = Contribution.new(contribution_params)
+    @contribution = current_user.contributions.new(contribution_params)
 
-    # respond_to do |format|
-      if @contribution.save
-        # format.html { redirect_to @contribution, notice: 'Contribution was successfully created.' }
-        # format.json { render :show, status: :created, location: @contribution }
-        redirect_to gifts_path
-      else
-        # format.html { render :new }
-        # format.json { render json: @contribution.errors, status: :unprocessable_entity }
-        redirect_to gifts_path
-      end
-    # end
+    p contribution_params
+    
+    if @contribution.save 
+      redirect_to contributions_path
+    else
+      redirect_to new_contribution_path
+    end
+    
   end
 
   # PATCH/PUT /contributions/1
   # PATCH/PUT /contributions/1.json
   def update
-    respond_to do |format|
-      if @contribution.update(contribution_params)
-        format.html { redirect_to @contribution, notice: 'Contribution was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contribution }
+    #  STRIPE PARAMS
+    #  FIND CORRECT CONTRIBUTION
+    @contribution = Contribution.update(stripe_params)
+
+      if @contribution.save
+        # CHARGE CARD HERE
+
+        redirect_to gifts_path
       else
-        format.html { render :edit }
-        format.json { render json: @contribution.errors, status: :unprocessable_entity }
+        redirect_to gifts_path
       end
-    end
   end
 
   # DELETE /contributions/1
@@ -71,8 +69,13 @@ class ContributionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def contribution_params
+    def stripe_params
       params.permit(:stripeToken, :stripeTokenType, :stripeEmail)
       # params.require(:contribution).permit(:user_id, :gift_id, :amount)
+    end
+
+    def contribution_params
+
+      params.require(:contribution).permit(:gift_id, :amount)
     end
 end

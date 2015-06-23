@@ -11,6 +11,7 @@ class GiftsController < ApplicationController
   # GET /gifts/1
   # GET /gifts/1.json
   def show
+    @contribution = Contribution.new
   end
 
   # GET /gifts/new
