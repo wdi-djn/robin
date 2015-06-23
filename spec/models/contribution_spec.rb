@@ -7,6 +7,14 @@ describe Contribution do
 		expect(FactoryGirl.build(:contribution_user_gift)).to be_valid
 	end
 
+	it "can be created on gift by a user" do
+		gift = FactoryGirl.create(:gift_with_user)
+		user = gift.user
+		contribution = FactoryGirl.attributes_for(:contribution, user_id: user.id, gift_id: gift.id)
+		user.gifts.last.contributions.create(contribution)
+		expect(user.gifts.last.contributions.count).to eq(1)
+	end
+
 	# creates a contribution for each test
 	before(:each) do
   		@cont = FactoryGirl.create(:contribution_user_gift)
