@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :signed_in?, except: [:index, :show]
+  # before_action :signed_in?, except: [:index, :show]
   before_action :set_gift, only: [:show, :edit, :update, :destroy]
 
   # GET /gifts
