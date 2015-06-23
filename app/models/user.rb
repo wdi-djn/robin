@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
   validates :username, presence: true, uniqueness: true
-  validates :email, presence: true, uniqueness: true, format: { with: REGEX }, uniqueness: { case_sensistive: false, message: 'Email already in use'}, :on => :create 
+  validates :email, presence: true, format: { with: REGEX }, uniqueness: { case_sensistive: false, message: 'Email already in use'}, :on => :create 
   validates :password, confirmation: true, length: { minimum: 6 }, :on => :create
 
   def self.confirm(params) 
