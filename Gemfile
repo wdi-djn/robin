@@ -54,6 +54,8 @@ group :development, :test do
   # Will generate dummy data
   gem 'ffaker'
 
+  gem 'omniauth-stripe-connect'
+  gem 'devise'
 
 end
 
