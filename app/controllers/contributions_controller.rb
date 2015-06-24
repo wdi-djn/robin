@@ -4,7 +4,8 @@ class ContributionsController < ApplicationController
   # GET /contributions
   # GET /contributions.json
   def index
-    @contributions = Contribution.all
+    @contributions = current_user.contributions
+
   end
 
   # GET /contributions/1
@@ -38,6 +39,11 @@ class ContributionsController < ApplicationController
   def update
     #  STRIPE PARAMS
     #  FIND CORRECT CONTRIBUTION
+    p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+     p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+      p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+       p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+    binding.pry
     @contribution = Contribution.update(stripe_params)
     Stripe.api_key = ENV['SECRET_ID']
 

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
 
+    put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
+
   end
 end
 #                   Prefix Verb     URI Pattern                              Controller#Action

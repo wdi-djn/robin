@@ -5,8 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>GIFT</th>
       <th>User</th>
-      <th>Gift</th>
       <th>Amount</th>
       <th colspan="3"></th>
     </tr>
@@ -15,24 +15,27 @@
   <tbody>
     <% @contributions.each do |contribution| %>
       <tr>
+        <td><%= contribution.gift.title %></td>
         <td><%= contribution.user_id %></td>
-        <td><%= contribution.gift_id %></td>
         <td><%= contribution.amount %></td>
         <td><%= link_to 'Show', contribution %></td>
         <td><%= link_to 'Edit', edit_contribution_path(contribution) %></td>
         <td><%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <!-- START STRIPE CHECKOUT -->
 
-        <%= form_tag gift_contribution_path, method: :post do %>
-          <!-- REPLACE TEST DATA KEY WITH REAL KEY -->
-          <script
-            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-            data-key= <%= contribution.user.publishable_key %>
-            data-amount= <%= contribution.amount %>
-            data-name="Demo Site"
-            data-description="2 widgets ($20.00)"
-            data-image="/128x128.png">
-          </script>
+
+        <% if current_user.publishable_key %>
+          <%= form_tag "/gifts/#{contribution.gift_id}/paycontributions", method: "put" do %>
+            <!-- REPLACE TEST DATA KEY WITH REAL KEY -->
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key= <%= current_user.publishable_key %>
+              data-amount= <%= contribution.amount.to_f*10 %>
+              data-name="Demo Site"
+              data-description="2 widgets ($20.00)"
+              data-image="/128x128.png">
+            </script>
+          <% end %>
         <% end %>
 
         <!-- END STRIPE -->
