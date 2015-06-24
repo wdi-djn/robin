@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
@@ -35,6 +35,10 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# stripe gems
+gem 'stripe'
+gem 'stripe_event'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -57,6 +61,9 @@ group :development, :test do
   # Will generate dummy data
   gem 'ffaker'
 
+  gem 'omniauth-stripe-connect'
+  gem 'devise'
+  gem 'dotenv-rails'
 
 end
 

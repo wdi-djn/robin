@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  before_action :signed_in?, except: [:index, :show]
+  # before_action :signed_in?, except: [:index, :show]
   before_action :set_gift, only: [:show, :edit, :update, :destroy]
 
   # GET /gifts
@@ -11,6 +11,7 @@ class GiftsController < ApplicationController
   # GET /gifts/1
   # GET /gifts/1.json
   def show
+    @contribution = Contribution.new
   end
 
   # GET /gifts/new
