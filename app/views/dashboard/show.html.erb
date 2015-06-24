@@ -1,0 +1,95 @@
+<% if signed_in? == false %>
+  <h1>Log In or Sign Up to see this page.</h1>
+<% else %>
+  <h1>Welcome <%= @current_user.username %>!</h1>
+
+<h2>Gifts to Fund</h2>
+
+  <div class='dashboardGroup'>
+      <% if @current_user.contributions.count == 0 %>
+        <small>No Gifts to Fund</small>
+      <% else %>
+        <% @current_user.contributions.each do |contribution| %>
+          <div class='giftGroup'>
+            <div class='lineItem'>
+              <%= contribution.gift.title %>
+
+              <% if contribution.gift.due_date > Time.now %>
+                <% timeLeft = contribution.gift.due_date - Time.now %>
+                <% minsLeft = timeLeft/60 %>
+                <% hoursLeft = minsLeft/60 %>
+                <% daysLeft = hoursLeft/24 %>
+                <% if daysLeft < 1 %>
+                  <% if hoursLeft < 1 %>
+                    <%= minsLeft.round %> minutes remaining
+                  <% else %>
+                    <%= hoursLeft.round %> hours remaining
+                  <% end %>
+                <% else %>
+                  <%= daysLeft.round %> days remaining
+              <% end %>
+
+              Goal: <%= number_to_currency(contribution.gift.price.to_d/1000, unit: "$")%>
+
+              <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
+                <%= hidden_field(:contribution, :id, value: contribution.id) %>
+                <script
+                  src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key= <%= contribution.gift.user.publishable_key %>
+                  data-amount= <%= contribution.amount.to_i %>
+                  data-name="Demo Site"
+                  data-description="2 widgets ($20.00)"
+                  data-image="/128x128.png">
+                </script>
+              <% end %>
+
+              <% else %>
+                EXPIRED
+              <% end %>
+              <br><br>           
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+  </div>
+
+<br><br>
+
+
+<h2>Gift Groups You Started</h2>
+  <% if @current_user.gifts.count == 0 %>
+    <small>You haven't created a gift to fund yet</small>
+  <% else %>
+    <div class='dashboardGroup'>
+      <% @current_user.gifts.each do |gift| %>
+        <div class='giftGroup'>
+          <div class='lineItem'>
+            <%= gift.title %>
+
+            <% if gift.due_date > Time.now %>
+              <% timeLeft = gift.due_date - Time.now %>
+              <% minsLeft = timeLeft/60 %>
+              <% hoursLeft = minsLeft/60 %>
+              <% daysLeft = hoursLeft/24 %>
+              <% if daysLeft < 1 %>
+                <% if hoursLeft < 1 %>
+                  <%= minsLeft.round %> minutes remaining
+                <% else %>
+                  <%= hoursLeft.round %> hours remaining
+                <% end %>
+              <% else %>
+                <%= daysLeft.round %> days remaining
+            <% end %>
+
+            Goal: <%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+
+            <% else %>
+              EXPIRED
+            <% end %>
+          </div>
+        </div>
+        <br><br>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
