@@ -1,63 +1,92 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Hippopotamus</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Hippopotamus</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<nav class="navbar">
-  <ul class="main">
-    <li>
-      <div class="home-button">
-        <h1><%= link_to "Home", root_path %></h1>
-      </div>
-    </li> 
-    <li>
-      <div class="menu-button">
-        <% if current_user %> 
-          <h2><a href="#">Menu</a></h2>
-        <% else %>
-          <h2><a href="#">Sign In</a></h2>
-        <% end %>
-      </div>    
-    </li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <ul class="main">
+      <li>
+        <div class="home-button">
+          <h1><%= link_to "Home", root_path %></h1>
+        </div>
+      </li> 
+      <li>
+        <div class="menu-button">
+          <% if current_user %> 
+            <h2><a href="#">Menu</a></h2>
+          <% else %>
+            <h2><a href="#">Sign In</a></h2>
+          <% end %>
+        </div>    
+      </li>
+    </ul>
+  </nav>
 
-<div class="site-wrapper">
-  <div class="site-canvas">
-    <!-- OFF CANVAS MENU STARTS -->
-    <ul class="menu open">
+  <div class="site-wrapper">
+    <div class="site-canvas">
+      <!-- OFF CANVAS MENU STARTS -->
+      <ul class="menu open">
+        <div class="content">
+          <% if current_user == nil %>
+              <!-- LOGIN FORM STARTS -->
+              <!--  move to partial -->
+              <h2>Log in</h2>
+
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <div class="field">
+                  <%= f.label :email %><br />
+                  <%= f.email_field :email, autofocus: true %>
+                </div>
+
+                <div class="field">
+                  <%= f.label :password %><br />
+                  <%= f.password_field :password, autocomplete: "off" %>
+                </div>
+
+                <% if devise_mapping.rememberable? -%>
+                  <div class="field">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                  </div>
+                <% end -%>
+
+                <div class="actions">
+                  <%= f.submit "Log in" %>
+                </div>
+              <% end %>
+
+              <%= render "/devise/shared/links" %>
+                    
+              <!-- LOGIN FORM ENDS -->
+            <li>
+              <%= link_to "Create Account", new_user_registration_path %>    
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Gift Groups", gifts_path %>
+            </li>
+            <li>  
+              <%= link_to "Create Gift Group", new_gift_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Out", sign_out_path, method: 'delete'  %> 
+            </li>
+          <% end %>
+          </div> 
+      </ul>   
+      <!-- OFF CANVAS MENU ENDS -->
+      <!-- MAIN CONTENT STARTS -->
       <div class="content">
-        <% if current_user == nil %>
-            <%= render partial: '/sessions/form' %>
-          <li>
-            <%= link_to "Create Account", new_user_path %>    
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Gift Groups", gifts_path %>
-          </li>
-          <li>  
-            <%= link_to "Create Gift Group", new_gift_path %>
-          </li>
-          <li>
-            <%= link_to "Sign Out", sign_out_path, method: 'delete'  %>  
-          </li>
-        <% end %>
-        </div> 
-    </ul>   
-    <!-- OFF CANVAS MENU ENDS -->
-    <!-- MAIN CONTENT STARTS -->
-    <div class="content">
-      <%= yield %>
+        <%= yield %>
+      </div>
+      <!-- MAIN CONTENT ENDS -->
     </div>
-    <!-- MAIN CONTENT ENDS -->
   </div>
-</div>
 
-</body>
+  </body>
 </html>
