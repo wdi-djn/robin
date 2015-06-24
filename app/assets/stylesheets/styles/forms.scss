@@ -1,0 +1,56 @@
+input, textarea {
+  font-size: 1em;
+  display: block;
+  padding: .6em;
+  background:none;
+  background-image:none;
+  border: $border;
+  color: $main;
+  border-radius:0;
+  transition:border-color .25s ease, box-shadow .25s ease;
+  &:focus {
+    outline:0;
+    border-color: $light-gray;
+  }
+}
+
+textarea {
+  border: $border;
+  resize: vertical;
+}
+
+label {
+  position: absolute;
+  left: .6em;
+  top: .7em;
+  color: rgba(0,0,0,0.5);
+  transition: all 0.12s ease;
+  -webkit-backface-visibility: hidden;
+  pointer-events: none;
+  font-size: 1em;
+  margin: 0;
+}
+
+#date label {
+  top: - 1.5em;
+}
+
+#date.field {
+  margin-top: 2.5em; 
+}
+
+.field {
+  position: relative;
+  margin-top: 1.6em;
+}
+
+.actions {
+  position: relative;
+  margin-top: 1.3em;
+}
+
+.field .active {
+  -webkit-transform: translateX(-.6em) translateY(-2.1em);
+  transform: translateX(-.6em) translateY(-2.1em);
+  font-size: .8em;
+}

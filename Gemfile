@@ -7,6 +7,9 @@ gem 'rails', '4.2.1'
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'normalize-rails'
+gem 'susy'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -35,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 # stripe gems
 gem 'stripe'
 gem 'stripe_event'
+gem 'omniauth-stripe-connect'
+gem 'devise'
+gem 'dotenv-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -57,10 +63,6 @@ group :development, :test do
 
   # Will generate dummy data
   gem 'ffaker'
-
-  gem 'omniauth-stripe-connect'
-  gem 'devise'
-  gem 'dotenv-rails'
 
 end
 

@@ -1,24 +1,22 @@
 Rails.application.routes.draw do
   devise_scope :user do
-  resources :contributions
-  resources :gifts
+    resources :contributions
+    resources :gifts
 
-  # change root to landing page
-  # landing page should check current_user and redirect to dashboard
-  root to: 'users#index'
+    # change root to landing page
+    # landing page should check current_user and redirect to dashboard
+    root to: 'users#index'
 
-  get '/profile/:id', to: 'users#show', as: 'show_user' 
+    get '/profile/:id', to: 'users#show', as: 'show_user' 
 
-  delete "/profile/sign_out", to:'devise/sessions#destroy', as: 'sign_out'
+    delete "/profile/sign_out", to:'devise/sessions#destroy', as: 'sign_out'
 
-  delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
+    delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
+    devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-  
-  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+    post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
 
-  post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
-
-  put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
+    put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
 
   end
 end
