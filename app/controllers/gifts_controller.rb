@@ -14,6 +14,8 @@ class GiftsController < ApplicationController
     # check if current user has password to view gift
     # if current_user
     unless session[@gift_id] == @gift.password
+      # Don't redirect if current user is gift creator
+      return @contribution = Contribution.new if current_user == @gift.user
       redirect_to gift_authenticate_path(@gift.id)
     end
 
