@@ -5,17 +5,17 @@
 
   <div class="field">
     <%= f.label :username %>
-    <%= f.text_field :username, placeholder: "Username" %>
+    <%= f.text_field :username %>
   </div>
 
   <div class="field">
     <%= f.label :first_name %>
-    <%= f.text_field :first_name, placeholder: "First Name" %>
+    <%= f.text_field :first_name %>
   </div>
   
   <div class="field">
     <%= f.label :last_name %>
-    <%= f.text_field :last_name, placeholder: "Last Name" %>
+    <%= f.text_field :last_name %>
   </div>
 
   <div class="field">
@@ -28,17 +28,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i>
+    <%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off" %>
+    <i>(leave blank if you don't want to change it)</i>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
-
+  <br>
+   <i>(we need your current password to confirm your changes)</i>
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i>
+    <%= f.label :current_password %>
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
