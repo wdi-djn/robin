@@ -1,5 +1,5 @@
 class ContributionsController < ApplicationController
-  before_action :set_contribution, only: [:show, :edit, :update, :destroy]
+  before_action :set_contribution, only: [:show, :edit, :destroy]
 
   # GET /contributions
   # GET /contributions.json
@@ -39,13 +39,11 @@ class ContributionsController < ApplicationController
   def update
     #  STRIPE PARAMS
     #  FIND CORRECT CONTRIBUTION
-    p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
-     p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
-      p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
-       p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
-    binding.pry
-    @contribution = Contribution.update(stripe_params)
+    @contribution = Contribution.find(params[:contribution][:id])
+    @contribution.update(stripe_params)
+            binding.pry
     Stripe.api_key = ENV['SECRET_ID']
+
 
     if @contribution
       # CHARGE CARD HERE
@@ -55,7 +53,7 @@ class ContributionsController < ApplicationController
         )
       charge = Stripe::Charge.create(
           :customer    => customer.id,
-          :amount      => @contribution.amount,
+          :amount      => @contribution.amount.to_i,
           :description => 'Rails Stripe customer',
           :currency    => 'usd'
       )
@@ -89,6 +87,6 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-      params.require(:contribution).permit(:gift_id, :amount)
+      params.require(:contribution).permit(:gift_id, :amount, :contribution[:id] )
     end
 end
