@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
     devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-    post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
+    post '/gifts/:gift_id/contributions', to: 'contributions#create', as: 'gift_contribution'
 
-    put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
+    put '/gifts/:gift_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
 
+    get '/gifts/:gift_id/authenticate', to: 'gifts#authenticate', as: 'gift_authenticate'
+    post '/gifts/:gift_id', to: 'gifts#password', as: 'gift_password'
     get '/dashboard', to: 'dashboard#show', as: 'dashboard'
 
   end
