@@ -61,7 +61,7 @@ $menu-width: span(12);
   width: 100vw;
   position: relative;
   top: $navbar-height;
-  overflow: hidden;  
+  overflow-x: hidden;  
   min-height: 100vh;
 }
 
@@ -72,7 +72,6 @@ $menu-width: span(12);
   transform: translateX(0);
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
-  min-height: 100%;
 }
 
 .main a {
