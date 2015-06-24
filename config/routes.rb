@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
     put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
 
+    get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+
   end
 end
 #                   Prefix Verb     URI Pattern                              Controller#Action
