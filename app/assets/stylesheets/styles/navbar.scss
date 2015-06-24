@@ -59,7 +59,7 @@ $menu-width: span(12);
 // off canvas setup
 .site-wrapper {
   width: 100vw;
-  position: relative;
+  // position: relative;
   top: $navbar-height;
   overflow: hidden;  
   height: 100vh;
@@ -67,11 +67,14 @@ $menu-width: span(12);
 
 .site-canvas {
   width: 100vw;
-  position: absolute;
+  // position: absolute;
+  left: 0;
   -webkit-transform: translateX(0);
   transform: translateX(0);
   -webkit-transition: .3s ease all;
   transition: .3s ease all;
+    background-color: #300;
+
 }
 
 .main a {
