@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
     get '/gifts/:gift_id/authenticate', to: 'gifts#authenticate', as: 'gift_authenticate'
     post '/gifts/:gift_id', to: 'gifts#password', as: 'gift_password'
+    get '/dashboard', to: 'dashboard#show', as: 'dashboard'
+
   end
 end
 #                   Prefix Verb     URI Pattern                              Controller#Action
