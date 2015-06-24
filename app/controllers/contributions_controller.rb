@@ -86,6 +86,6 @@ class ContributionsController < ApplicationController
     end
 
     def contribution_params
-      params.require(:contribution).permit(:gift_id, :amount, :contribution[:id] )
+      params.require(:contribution).permit(:gift_id, :amount)
     end
 end
