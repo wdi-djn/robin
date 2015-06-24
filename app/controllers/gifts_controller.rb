@@ -11,6 +11,13 @@ class GiftsController < ApplicationController
   # GET /gifts/1
   # GET /gifts/1.json
   def show
+    # check if current user has password to view gift
+    p "SHOW"
+    unless session[@gift.id] == @gift.password
+      p "REDIRECT NOW"
+      redirect_to gift_password_path(@gift.id)
+    end
+
     @contribution = Contribution.new
   end
 
@@ -63,6 +70,10 @@ class GiftsController < ApplicationController
     end
   end
 
+  def password
+    @gift = Gift.all.find(5)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gift
@@ -71,6 +82,6 @@ class GiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url)
+      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url, :password)
     end
 end
