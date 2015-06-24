@@ -43,12 +43,11 @@ class ContributionsController < ApplicationController
     @contribution.update(stripe_params)
     Stripe.api_key = ENV['SECRET_ID']
 
-
     if @contribution
       # CHARGE CARD HERE
       customer = Stripe::Customer.create(
           :email => @contribution.stripeEmail,
-          :card  => @contribution.stripeToken
+          :source  => @contribution.stripeToken
         )
       charge = Stripe::Charge.create(
           :customer    => customer.id,
