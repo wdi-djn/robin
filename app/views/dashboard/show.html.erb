@@ -27,25 +27,26 @@
                     <% end %>
                   <% else %>
                     <%= daysLeft.round %> days remaining
-                <% end %>
+                  <% end %>
 
-                Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
+                  Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
 
-                <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
-                  <%= hidden_field(:contribution, :id, value: contribution.id) %>
-                  <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key= <%= contribution.gift.user.publishable_key %>
-                    data-amount= <%= contribution.amount.to_i %>
-                    data-name="Demo Site"
-                    data-description="2 widgets ($20.00)"
-                    data-image="/128x128.png">
-                  </script>
-                <% end %>
+                  <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
+                    <%= hidden_field(:contribution, :id, value: contribution.id) %>
+                    <script
+                      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                      data-key= <%= contribution.gift.user.publishable_key %>
+                      data-amount= <%= contribution.amount.to_i %>
+                      data-name="Demo Site"
+                      data-description="2 widgets ($20.00)"
+                      data-image="/128x128.png">
+                    </script>
+                  <% end %>
 
                 <% else %>
                   EXPIRED
                 <% end %>
+
                 <br><br>           
               </div>
             </div>
@@ -79,13 +80,14 @@
                   <% end %>
                 <% else %>
                   <%= daysLeft.round %> days remaining
-              <% end %>
+                <% end %>
 
-              Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+                Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
 
               <% else %>
                 EXPIRED
               <% end %>
+
             </div>
           </div>
           <br><br>
@@ -93,22 +95,45 @@
       </div>
     <% end %>
 
-    <h2>Archive</h2>    
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
-    <p>content</p>
+    <br><br>
+
+    <h2>Archive</h2>
+      <% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
+        <small>Empty</small>
+
+      <% else %>
+
+        <% if @current_user.gifts.count != 0 %>
+          <h4>Your Gifting Groups</h4>
+          <div class='dashboardGroup'>
+          <% @current_user.gifts.each do |gift| %>
+            <div class='giftGroup'>
+              <div class='lineItem'>
+                <%= gift.title %>
+                Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+              </div>
+            </div>
+          <% end %>
+          <br><br>
+          </div>
+        <% end %>
+
+        <% if @current_user.gifts.count != 0 %>
+          <h4>Your Contributions</h4>
+          <div class='dashboardGroup'>
+          <% @current_user.contributions.each do |contribution| %>
+            <div class='giftGroup'>
+              <div class='lineItem'>
+                <%= contribution.gift.title %>
+                Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
+              </div>
+            </div>
+          <% end %>
+          <br><br>
+          </div>
+        <% end %>
+
+      <% end %>
 
 <% end %>
+
