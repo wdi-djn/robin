@@ -15,19 +15,23 @@
         <%= link_to 'Destroy', contribution, method: :delete, data: { confirm: 'Are you sure?' } %>
         <!-- START STRIPE CHECKOUT -->
 
-
         <% if current_user.publishable_key %>
-          <%= form_tag "/gifts/#{contribution.gift_id}/paycontributions", method: "put" do %>
+        <td>
+          <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
             <!-- REPLACE TEST DATA KEY WITH REAL KEY -->
+
             <%= hidden_field(:contribution, :id, value: contribution.id) %>
             <script
               src="https://checkout.stripe.com/checkout.js" class="stripe-button"
               data-key= <%= current_user.publishable_key %>
-              data-amount= <%= contribution.amount.to_f*10 %>
+              data-amount= <%= contribution.amount.to_i %>
               data-name="Demo Site"
               data-description="2 widgets ($20.00)">
             </script>
           <% end %>
+        </td>
+
+
         <% end %>
 
         <!-- END STRIPE -->

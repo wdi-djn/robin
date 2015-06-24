@@ -41,7 +41,6 @@ class ContributionsController < ApplicationController
     #  FIND CORRECT CONTRIBUTION
     @contribution = Contribution.find(params[:contribution][:id])
     @contribution.update(stripe_params)
-            binding.pry
     Stripe.api_key = ENV['SECRET_ID']
 
 
