@@ -29,7 +29,7 @@
                   <%= daysLeft.round %> days remaining
               <% end %>
 
-              Goal: <%= number_to_currency(contribution.gift.price.to_d/1000, unit: "$")%>
+              Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
 
               <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
                 <%= hidden_field(:contribution, :id, value: contribution.id) %>
@@ -81,7 +81,7 @@
                 <%= daysLeft.round %> days remaining
             <% end %>
 
-            Goal: <%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+            Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
 
             <% else %>
               EXPIRED
