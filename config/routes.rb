@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
-
   post '/gifts/:gifts_id/contributions', to: 'contributions#create', as: 'gift_contribution'
+
+  put '/gifts/:gifts_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
 
   end
 end

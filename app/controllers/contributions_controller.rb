@@ -39,6 +39,11 @@ class ContributionsController < ApplicationController
   def update
     #  STRIPE PARAMS
     #  FIND CORRECT CONTRIBUTION
+    p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+     p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+      p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+       p "aslkcjlsdjcjasdaslklkfadjflkasdjldslfj"
+    binding.pry
     @contribution = Contribution.update(stripe_params)
     Stripe.api_key = ENV['SECRET_ID']
 
