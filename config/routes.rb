@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   delete "/profile/sign_out", to:'devise/sessions#destroy', as: 'sign_out'
 
   delete '/users/:id', to: 'devise/registrations#destroy', as: 'delete_user'
+
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
 
