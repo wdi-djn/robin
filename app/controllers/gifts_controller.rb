@@ -13,7 +13,7 @@ class GiftsController < ApplicationController
   def show
     # check if current user has password to view gift
     p "SHOW"
-    unless session[@gift.id] == @gift.password
+    unless session[@gift_id] = @gift.password
       p "REDIRECT NOW"
       redirect_to gift_password_path(@gift.id)
     end
@@ -70,8 +70,25 @@ class GiftsController < ApplicationController
     end
   end
 
+  # GET
+  def authenticate
+    @gift = Gift.all.find(params[:gift_id])
+  end
+
+  # POST
   def password
-    @gift = Gift.all.find(5)
+    # if passwords match, store in session
+    p "PASSWORD IS"
+    p params[:gift][:password]
+
+    @gift = Gift.all.find(params[:gift_id])
+    if params[:gift][:password] == @gift.password
+      session[@gift_id] = @gift.password
+      redirect_to gift_path(@gift)
+    else
+      flash[:error] = "Incorrect password"
+      redirect_to gift_authenticate_path
+    end
   end
 
   private

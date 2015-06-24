@@ -18,7 +18,8 @@ Rails.application.routes.draw do
 
     put '/gifts/:gift_id/paycontributions', to: 'contributions#update', as: 'update_gift_contribution'
 
-    get '/gifts/:gift_id/password', to: 'gifts#password', as: 'gift_password'
+    get '/gifts/:gift_id/authenticate', to: 'gifts#authenticate', as: 'gift_authenticate'
+    post '/gifts/:gift_id', to: 'gifts#password', as: 'gift_password'
   end
 end
 #                   Prefix Verb     URI Pattern                              Controller#Action
