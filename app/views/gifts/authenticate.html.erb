@@ -1,0 +1,15 @@
+This group requires a password to view.
+
+<%= form_for @gift, method: "POST" do |f| %>
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+  <% end %>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Submit" %>
+  </div>
+<% end %>

@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20150624212244) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.decimal  "current_total"
+    t.string   "password"
   end
 
   create_table "users", force: :cascade do |t|

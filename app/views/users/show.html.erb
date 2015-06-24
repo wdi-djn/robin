@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= image_tag gravatar_url(@user.email, 300), alt: "" %>
 <p>
   <strong>First name:</strong>
   <%= @user.first_name %>
