@@ -41,7 +41,7 @@ class ContributionsController < ApplicationController
     #  FIND CORRECT CONTRIBUTION
     @contribution = Contribution.find(params[:contribution][:id])
     @contribution.update(stripe_params)
-    Stripe.api_key = ENV['SECRET_ID']
+    Stripe.api_key = @contribution.gift.user.access_code
 
     if @contribution
       # CHARGE CARD HERE
