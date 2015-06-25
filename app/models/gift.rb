@@ -2,7 +2,7 @@ class Gift < ActiveRecord::Base
   belongs_to :user
 
   def active?
-    if self.current_total >= self.price 
+    if Date.new >= self.due_date 
       self.active = false
       self.save
     end
