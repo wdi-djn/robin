@@ -24,14 +24,14 @@ describe Gift do
 	# validates the gift attributes
 	context "when creating gift attributes" do
 		it "is invalid without a title" do
-			gift = FactoryGirl.create(:gift, title: nil)
+			gift = FactoryGirl.build(:gift, title: nil)
 			gift.valid?
-			expect(gift.errors[:title].count).to eq(1)
+			expect(gift.errors[:title].count).to eq(2)
 		end
 		it "is invalid without a description" do
-			gift = FactoryGirl.create(:gift, title: nil)
+			gift = FactoryGirl.build(:gift, description: nil)
 			gift.valid?
-			expect(gift.errors[:decription].count).to eq(1)
+			expect(gift.errors[:description].count).to eq(2)
 		end
 	end
 end

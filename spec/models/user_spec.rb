@@ -73,7 +73,7 @@ describe User do
 		it "is invalid if not at least 6 characters long" do
 			user = FactoryGirl.build(:user, password: "five")
 			user.valid?
-			expect(user.errors[:password]).to include("is too short (minimum is 6 characters)")
+			expect(user.errors[:password]).to include("is too short (minimum is 8 characters)")
 		end
 	end
 
@@ -88,11 +88,11 @@ describe User do
 		end
 	end
 
-	# class method testing
-	describe ".confirm" do
-		it "responds to User class" do
-		expect(User).to respond_to(:confirm)
-		end
-	end
+	# class method testing - this has been removed with devise
+	# describe ".confirm" do
+	# 	it "responds to User class" do
+	# 	expect(User).to respond_to(:confirm)
+	# 	end
+	# end
 
 end

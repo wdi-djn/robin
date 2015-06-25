@@ -11,11 +11,24 @@ class GiftsController < ApplicationController
   # GET /gifts/1
   # GET /gifts/1.json
   def show
+    # check if current user has password to view gift
+    # if current_user
+    unless session[@gift_id] == @gift.password
+      # Don't redirect if current user is gift creator
+      return @contribution = Contribution.new if current_user == @gift.user
+      redirect_to gift_authenticate_path(@gift.id)
+    end
+
     @contribution = Contribution.new
   end
 
   # GET /gifts/new
   def new
+    # User account must be connected to strip to create a gift
+    unless current_user.publishable_key 
+      redirect_to stripe_connect_user_path
+    end
+    
     @gift = Gift.new
   end
 
@@ -63,6 +76,26 @@ class GiftsController < ApplicationController
     end
   end
 
+  # GET
+  def authenticate
+    @gift = Gift.all.find(params[:gift_id])
+  end
+
+  # POST
+  def password
+    # check if passwords match
+    @gift = Gift.all.find(params[:gift_id])
+    if params[:gift][:password] == @gift.password
+      # store gift password in session  
+      session[@gift_id] = @gift.password
+      redirect_to gift_path(@gift)
+    else
+      # redirect to retry
+      flash[:error] = "Incorrect password"
+      redirect_to gift_authenticate_path
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gift
@@ -71,6 +104,6 @@ class GiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url)
+      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url, :password, :current_total)
     end
 end

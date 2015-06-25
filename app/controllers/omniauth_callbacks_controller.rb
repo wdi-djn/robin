@@ -9,9 +9,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       access_code: request.env["omniauth.auth"].credentials.token,
       publishable_key: request.env["omniauth.auth"].info.stripe_publishable_key
       })
-      redirect_to gifts_path
-    else
       redirect_to new_gift_path
+    else
+      flash[:error] = "We could not connect your Stripe account"
+      redirect_to stripe_connect_user_path
     end
 
   end
