@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   
   devise :omniauthable
 
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-  # REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
-  # validates :username, presence: true, uniqueness: true
-  # validates :email, presence: true, uniqueness: true, format: { with: REGEX }, uniqueness: { case_sensistive: false, message: 'Email already in use'}, :on => :create 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i  
+  validates :username, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true, format: { with: REGEX }, uniqueness: { case_sensistive: false, message: 'Email already in use'}, :on => :create 
 
 end
