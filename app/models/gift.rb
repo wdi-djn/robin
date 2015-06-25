@@ -19,8 +19,14 @@ class Gift < ActiveRecord::Base
   	presence: true,
   	:length => { maximum: 50 }
 
+  validates :due_date,
+    presence: true,
+    date: { after: Proc.new { Date.today + 3},
+                message: 'is too soon! Select a day at least 3 days from now' },
+                on: :create
+
   validates :gift_url, 
-    :allow_nil,
+    :allow_nil => true,
   	format: { with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?\z/ix, 
   			  message: "Please enter a valid URL" }
   
