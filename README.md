@@ -2,6 +2,8 @@
 
 ## Description
 
+## Technologies Used
+
 
 ## Wireframes
 
@@ -10,7 +12,7 @@
 
 
 ## APIs Used
-
+Stripe
 
 ## Scope
 
