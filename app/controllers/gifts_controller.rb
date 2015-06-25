@@ -24,6 +24,11 @@ class GiftsController < ApplicationController
 
   # GET /gifts/new
   def new
+    # User account must be connected to strip to create a gift
+    unless current_user.publishable_key 
+      redirect_to stripe_connect_user_path
+    end
+    
     @gift = Gift.new
   end
 
