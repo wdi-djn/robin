@@ -20,6 +20,7 @@ class Gift < ActiveRecord::Base
   	:length => { maximum: 50 }
 
   validates :gift_url, 
+    :allow_nil,
   	format: { with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?\z/ix, 
   			  message: "Please enter a valid URL" }
   
