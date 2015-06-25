@@ -18,3 +18,12 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+
+every 1.day, :at => "3:00 am" do
+  runner "Gift.complete?"
+end
+
+every 1.minute do
+  runner "Gift.complete?"
+end
