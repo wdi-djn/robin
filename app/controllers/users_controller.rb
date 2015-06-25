@@ -15,4 +15,8 @@ class UsersController < ApplicationController
   def stripe_connect
   end
 
+  def stripe_disconnect
+    current_user.update(:publishable_key => nil, :provider => nil, :uid => nil, :access_code => nil)
+    redirect_to show_user_path(current_user)
+  end
 end

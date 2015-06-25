@@ -1,5 +1,9 @@
-You must first connect a stripe account to create a gift
+<div class='stripeStatus'>You must first connect a stripe account to create a gift</div>
 <% if flash[:error] %>
   <%= flash[:error] %>
 <% end %>
+<br>
 <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
+<br>
+<br>
+<div class='stripeStatus'>Connect your stripe account to start receiving funds!</div>

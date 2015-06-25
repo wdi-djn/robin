@@ -19,5 +19,12 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_registration_path(@user) %> |
+
+
+<% if current_user.id == params[:id].to_i %>
+  <% if current_user.publishable_key %>
+    <div class='stripeStatus'>stripe connected!</div> <br>
+  <% end %>
+  <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<% end %>
 <%= link_to 'Back', root_path %>
