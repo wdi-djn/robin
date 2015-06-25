@@ -58,7 +58,7 @@ class ContributionsController < ApplicationController
           :description => 'Rails Stripe customer',
           :currency    => 'usd'
       )
-
+      @contribution.update(:paid => true)
       redirect_to gifts_path
     else
       redirect_to gifts_path
