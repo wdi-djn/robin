@@ -61,8 +61,8 @@ $menu-width: span(12);
   width: 100vw;
   position: relative;
   top: $navbar-height;
-  overflow: hidden;  
-  height: 100vh;
+  overflow-x: hidden;  
+  min-height: 100vh;
 }
 
 .site-canvas {
