@@ -16,7 +16,7 @@ $navbar-height: 50px;
     background-color: $trans-white;
     border-bottom: $border;
     margin: 0;
-    z-index: 999;
+    z-index: 998;
 }
 
 .content {
@@ -25,7 +25,10 @@ $navbar-height: 50px;
 
 .menu-container {
   position: fixed;
-  background-color: rgba(255,255,255,0.95);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  // background-color: rgba(255,255,255,0.95);
 }
 
 .menu-button {
@@ -47,6 +50,7 @@ $navbar-height: 50px;
   display: none;
   top: $navbar-height;
   background-color: $trans-white;
+  z-index: 999;
 }
 
 .main a {
