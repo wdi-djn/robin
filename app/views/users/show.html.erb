@@ -1,0 +1,30 @@
+<%= image_tag gravatar_url(@user.email, 300), alt: "" %>
+<p>
+  <strong>First name:</strong>
+  <%= @user.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @user.last_name %>
+</p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @user.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+
+
+<% if current_user.id == params[:id].to_i %>
+  <% if current_user.publishable_key %>
+    <div class='stripeStatus'>stripe connected!</div> <br>
+  <% end %>
+  <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<% end %>
+<%= link_to 'Back', root_path %>

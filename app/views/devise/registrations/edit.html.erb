@@ -1,0 +1,66 @@
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label 'Optional New Password' %>
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label 'New Password Confirmation' %>
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+  <div class="field">
+    <%= f.label :current_password %>
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<br>
+
+<% if current_user.publishable_key %>
+  <div class='removeAccount'>
+  <a href='javascript:void(0)' class='dropDown'>Want to disconnect stripe?</a>
+    <%= button_to "Disconnect stripe now", stripe_disconnect_path, :method => :put %>
+  </div>
+<% else %>
+  <div class='stripeStatus'>no stripe account connected</div>
+<% end %>
+
+<div class='removeAccount'>
+<a href='javascript:void(0)' class='dropDown'>Want to delete account?</a>
+  <p class='deleteButton'>Unhappy? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Sorry to see you go. Are you sure?" }, method: :delete %></p>
+</div>
+
+
+<%= link_to "Back", :back %>

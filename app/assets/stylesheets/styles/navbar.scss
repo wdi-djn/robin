@@ -1,0 +1,72 @@
+// VARIABLES
+$navbar-height: 50px;
+
+// NAV
+.top-bar {
+  z-index: 998;
+  background-color: $trans-white;
+  width: 100%;
+}
+
+.top-bar-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: $trans-white;
+    border-bottom: $border;
+    margin: 0;
+    z-index: 998;
+}
+
+.content {
+  padding-top: $navbar-height;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 997;
+  width: 100vw;
+  // background-color: rgba(255,255,255,0.95);
+}
+
+.menu-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  height: 100%;
+  border-right: $border;
+  border-left: $border;
+}
+
+.menu li {
+  padding: 1em 0;
+  border-bottom: $border;
+}
+
+.menu {
+  display: none;
+  top: $navbar-height;
+  background-color: $trans-white;
+  z-index: 999;
+}
+
+.main a {
+  color: $main;
+  text-decoration: none;
+}
+
+.main .home-button h1 {
+  font-size: 1.7em;
+  margin-top: .3em;
+}
+
+.main h2 {
+  margin-top: 1em;
+}
+
+
+

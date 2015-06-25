@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  price: 9.99
+  gift_url: MyString
+  due_date: 2015-06-21 11:17:21
+  recipient: MyString
+  user_id: 1
+  hashed_id: MyString
+
+two:
+  title: MyString
+  description: MyText
+  price: 9.99
+  gift_url: MyString
+  due_date: 2015-06-21 11:17:21
+  recipient: MyString
+  user_id: 1
+  hashed_id: MyString

@@ -1,0 +1,67 @@
+<div class="row">
+  <%= form_for(@gift) do |f| %>
+    <% if @gift.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@gift.errors.count, "error") %> prohibited this gift from being saved:</h2>
+
+        <ul>
+        <% @gift.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="field medium-6 columns">
+      <%= f.label :price %>
+      <%= f.text_field :price %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :recipient %>
+      <%= f.text_field :recipient %>
+    </div>
+    <div class="field medium-6 columns">
+      <%= f.label :gift_url %>
+      <%= f.text_field :gift_url %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field medium-6 columns" id="date">
+      <%= f.label :due_date %>
+      <%= f.date_select :due_date %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field medium-3 columns">
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field medium-12 columns">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+  </div>
+
+      <%= f.hidden_field :current_total, :value => 0 %>
+  
+  <div class="row">
+    <div class="actions medium-3 columns">
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>
+</div>

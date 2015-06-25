@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-
+gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'normalize-rails'
+gem 'foundation-rails'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -24,13 +27,25 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+
+# stripe gems
+gem 'stripe'
+gem 'stripe_event'
+gem 'omniauth-stripe-connect'
+gem 'devise'
+gem 'dotenv-rails'
+
+gem 'date_validator'
+
+gem 'whenever', :require => false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,5 +56,19 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Rspec testing
+  gem 'rspec-rails', '~> 3.0.0'
+
+  # Factory girl for using factories instead of fixtures
+  gem 'factory_girl_rails'
+
+  # Capybara to mimic browser interactions for testing
+  gem 'capybara'
+
+  # Will generate dummy data
+  gem 'ffaker'
+
+
 end
 
