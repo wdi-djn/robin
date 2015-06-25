@@ -34,9 +34,9 @@ class ContributionsController < ApplicationController
 
       # allows the gift to be paid now
       if specificGift.current_total >= specificGift.price
-        specificGift.can_fund = true
+        specificGift.update(:can_fund => true)
       end
-
+      
       redirect_to contributions_path
     else
       redirect_to new_contribution_path
