@@ -21,9 +21,5 @@
 
 
 every 1.day, :at => "3:00 am" do
-  runner "Gift.complete?"
-end
-
-every 1.minute do
-  runner "Gift.complete?"
+  runner "Gift.active?"
 end
