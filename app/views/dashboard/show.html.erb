@@ -1,10 +1,9 @@
-<h1>Welcome <%= @current_user.username %>!</h1>
+<h1 class="row">Welcome <%= @current_user.username %>!</h1>
 
-<h2>Gifts to Fund</h2>
-
-<div class='dashboardGroup'>
+<div class='dashboardGroup row'>
+  <h2>Gifts to Fund</h2>
   <% if @current_user.contributions.count == 0 %>
-    <small>No Gifts to Fund</small>
+    <p>No Gifts to Fund</p>
   <% else %>
     <div class='giftGroup'>
       <% @current_user.contributions.each do |contribution| %>
@@ -39,13 +38,11 @@
 </div>
 
 
-<br><br>
 
-
-<h2>Gift Groups You Started</h2>
-<div class='dashboardGroup'>
+<div class='dashboardGroup row'>
+  <h2>Gift Groups You Started</h2>
   <% if @current_user.gifts.count == 0 %>
-    <small>You haven't created a gift to fund yet</small>
+    <p>You haven't created a gift to fund yet</p>
   <% else %>
     <div class='giftGroup'>
       <% @current_user.gifts.each do |gift| %>
@@ -59,42 +56,38 @@
   <% end %>
 </div>
 
-
-<br><br>
-
-
-<h2>Archive</h2>
-<% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
-  <small>Empty</small>
-<% else %>
-  <% if @current_user.gifts.count != 0 %>
-    <h4>Your Gifting Groups</h4>
-    <div class='dashboardGroup'>
-    <% @current_user.gifts.each do |gift| %>
-      <% if gift.active == false %>
-        <div class='giftGroup'>
-          <div class='lineItem'>
-            <strong class='title'><%= link_to gift.title, "/gifts/#{gift.id}" %></strong>
-            <div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
-            <% if gift.current_total < gift.price %>
-              <div class='fundStatus'>MISSED</div>
-            <% else %>
-              <div class='fundStatus'>FUNDED</div>
-            <% end %>
+<div class='dashboardGroup row'>
+  <h2>Archive</h2>
+  <% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
+    <p>Empty</p>
+  <% else %>
+    <% if @current_user.gifts.count != 0 %>
+      <h4>Your Gifting Groups</h4>
+      <div class='dashboardGroup'>
+      <% @current_user.gifts.each do |gift| %>
+        <% if gift.active == false %>
+          <div class='giftGroup'>
+            <div class='lineItem'>
+              <strong class='title'><%= link_to gift.title, "/gifts/#{gift.id}" %></strong>
+              <div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+              <% if gift.current_total < gift.price %>
+                <div class='fundStatus'>MISSED</div>
+              <% else %>
+                <div class='fundStatus'>FUNDED</div>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <br>
+          <br>
+        <% end %>
       <% end %>
+      <br><br>
+      </div>
     <% end %>
-    <br><br>
-    </div>
-  <% end %>
+</div>
 
-
-
+<div class='dashboardGroup row'>
   <% if @current_user.gifts.count != 0 %>
     <h4>Your Contributions</h4>
-    <div class='dashboardGroup'>
     <% @current_user.contributions.each do |contribution| %>
       <% if (contribution.gift.active == false) && (contribution.paid == true) %>
         <div class='giftGroup'>
