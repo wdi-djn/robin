@@ -39,8 +39,7 @@
           </li>
         <% else %>
           <li>
-            <%= link_to "Gift Groups", gifts_path %>
-          </li>
+            <%= link_to "Profile", show_user_path(current_user) %>
           <li>  
             <%= link_to "Create Gift Group", new_gift_path %>
           </li>
@@ -52,3 +51,4 @@
 
   </ul>
 </div>
+
