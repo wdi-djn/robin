@@ -1,6 +1,4 @@
 class UserMailer < ApplicationMailer
-	
-	default from: "hippowhobringsgifts@gmail.com"
 
 	def new_user_email(user)
 		@user = user
