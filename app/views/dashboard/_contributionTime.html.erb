@@ -1,0 +1,19 @@
+<%= contribution.gift.title %>
+
+<% timeLeft = contribution.gift.due_date - Time.now %>
+<% minsLeft = timeLeft/60 %>
+<% hoursLeft = minsLeft/60 %>
+<% daysLeft = hoursLeft/24 %>
+<% if daysLeft < 1 %>
+  <% if hoursLeft < 1 %>
+      <% if minsLeft > 0 %>
+        <%= minsLeft.round %> minutes remaining
+      <% end %>
+  <% else %>
+    <%= hoursLeft.round %> hours remaining
+  <% end %>
+<% else %>
+  <%= daysLeft.round %> days remaining
+<% end %>
+
+Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
