@@ -12,4 +12,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def stripe_connect
+  end
+
 end
