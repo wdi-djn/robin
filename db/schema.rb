@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150624212244) do
+ActiveRecord::Schema.define(version: 20150625041225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 20150624212244) do
     t.integer  "user_id"
     t.integer  "gift_id"
     t.decimal  "amount"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "stripeToken"
     t.string   "stripeTokenType"
     t.string   "stripeEmail"
+    t.boolean  "paid",            default: false
   end
 
   create_table "gifts", force: :cascade do |t|
@@ -36,10 +37,11 @@ ActiveRecord::Schema.define(version: 20150624212244) do
     t.string   "recipient"
     t.integer  "user_id"
     t.string   "hashed_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "password"
     t.decimal  "current_total"
+    t.boolean  "active",        default: true
   end
 
   create_table "users", force: :cascade do |t|
