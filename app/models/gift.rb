@@ -50,4 +50,4 @@ class Gift < ActiveRecord::Base
     puts "NEW GIFT EMAIL SENT!"
   end
 
-
+end
