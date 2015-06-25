@@ -12,29 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label :price %>
     <%= f.text_field :price %>
   </div>
-  <div class="field">
-    <%= f.label :due_date %><br>
+  <div class="field" id="date">
+    <%= f.label :due_date %>
     <%= f.date_select :due_date %>
   </div>
   <div class="field">
-    <%= f.label :recipient %><br>
+    <%= f.label :recipient %>
     <%= f.text_field :recipient %>
   </div>
   <div class="field">
-    <%= f.label :gift_url %><br>
+    <%= f.label :gift_url %>
     <%= f.text_field :gift_url %>
   </div>
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.text_field :password %>
+  </div>
+  <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
   <div class="actions">
     <%= f.submit %>
   </div>

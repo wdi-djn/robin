@@ -1,12 +1,15 @@
 source 'https://rubygems.org'
 
-
+gem 'pry-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'normalize-rails'
+gem 'susy'
+
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -49,5 +52,18 @@ group :development, :test do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  # Rspec testing
+  gem 'rspec-rails', '~> 3.0.0'
+
+  # Factory girl for using factories instead of fixtures
+  gem 'factory_girl_rails'
+
+  # Capybara to mimic browser interactions for testing
+  gem 'capybara'
+
+  # Will generate dummy data
+  gem 'ffaker'
+
 end
 

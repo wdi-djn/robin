@@ -1,0 +1,44 @@
+//  GRID
+@import "susy";
+
+/* Changing Susy default global settings */
+$susy: (
+  /* Tells Susy to use 12 columns */
+  columns: 12,
+  /* Tells Susy that the container has a max-width of 1120px */
+  container: 1200px,
+  container-position: center,
+  /* Tells Susy to use border-box */
+  global-box-sizing: border-box 
+  );
+
+.content {
+  @include container;
+}
+
+/* Makes border-box properties */
+@include border-box-sizing;
+
+// COLORS
+$main: #333;
+$white: #FFF;
+$light-gray: #E6E6E7;
+
+
+// BORDERS
+$border: 1px solid $light-gray;
+
+// LISTS
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+html, body {
+  font-size: 16px;
+}
+
+h2 {
+  font-size: 1em;
+}
