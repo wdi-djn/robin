@@ -13,6 +13,10 @@ class GiftsController < ApplicationController
   def show
     # check if current user has password to view gift
     # if current_user
+    if @gift.password == nil || ""
+      return @contribution = Contribution.new
+    end
+
     unless session[@gift_id] == @gift.password
       # Don't redirect if current user is gift creator
       return @contribution = Contribution.new if current_user == @gift.user

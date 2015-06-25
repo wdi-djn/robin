@@ -40,7 +40,7 @@
     <%= f.text_field :password %>
   </div>
 
-  <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
+  <div class='stripeStatus'>stripe connected!</div>
 
     <%= f.hidden_field :current_total, :value => 0 %>
 
