@@ -2,13 +2,16 @@
 $navbar-height: 50px;
 
 // NAV
-.top-nav {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  height: $navbar-height;
-  border-bottom: $border;
-  z-index: 999;
+.top-bar {
+  // position: fixed;
+}
+
+.top-bar-bg {
+    width: 100vw;
+    background-color: $trans-white;
+    border-bottom: $border;
+    margin: 0;
+    z-index: 999;
 }
 
 .menu-button {
@@ -16,6 +19,7 @@ $navbar-height: 50px;
   top: 0;
   right: 0;
   padding: 0 1em;
+  height: 100%;
   border-right: $border;
   border-left: $border;
 }
@@ -29,8 +33,7 @@ $navbar-height: 50px;
   width: 100vw;
   position: absolute;
   top: $navbar-height;
-  background-color: $white;
-  height: 100vh;
+  background-color: $trans-white;
 }
 
 .main a {
