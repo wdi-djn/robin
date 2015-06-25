@@ -13,11 +13,11 @@ class Gift < ActiveRecord::Base
 
   validates :title, 
   	presence: true,
-  	:length => { minimum: 5, maximum: 100 }
+  	:length => { minimum: 3, maximum: 100 }
  
   validates :description, 
   	presence: true,
-  	:length => { minimum: 5, maximum: 1000 }
+  	:length => { minimum: 3, maximum: 1000 }
   
   validates :price,
   	presence: true,
@@ -36,7 +36,7 @@ class Gift < ActiveRecord::Base
   validates :gift_url, 
     :allow_blank => true,
   	format: { with: URI.regexp, 
-  			  message: "is not valid" }
+  			  message: "is not valid, please enter the full link" }
   
 
     def confirm_new_gift
