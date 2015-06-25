@@ -39,6 +39,11 @@
     <%= f.label :password %>
     <%= f.text_field :password %>
   </div>
+
+  <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
+
+    <%= f.hidden_field :current_total, :value => 0 %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

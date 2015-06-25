@@ -26,8 +26,17 @@ class ContributionsController < ApplicationController
   # POST /contributions.json
   def create
     @contribution = current_user.contributions.new(contribution_params)
-
     if @contribution.save 
+      # adds the contribution amount to the current total in gift
+      specificGift = Gift.find(@contribution.gift_id)
+      current_total = specificGift.current_total + @contribution.amount
+      specificGift.update(:current_total => current_total)
+
+      # allows the gift to be paid now
+      if specificGift.current_total >= specificGift.price
+        specificGift.update(:can_fund => true)
+      end
+      
       redirect_to contributions_path
     else
       redirect_to new_contribution_path
@@ -55,7 +64,7 @@ class ContributionsController < ApplicationController
           :description => 'Rails Stripe customer',
           :currency    => 'usd'
       )
-
+      @contribution.update(:paid => true)
       redirect_to gifts_path
     else
       redirect_to gifts_path
