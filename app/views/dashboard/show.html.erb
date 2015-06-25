@@ -77,7 +77,7 @@
         <% if gift.active == false %>
           <div class='giftGroup'>
             <div class='lineItem'>
-              <strong class='title'><%= gift.title %></strong>
+              <strong class='title'><%= link_to gift.title, "/gifts/#{gift.id}" %></strong>
               <div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
                 <div class='fundStatus'>MISSED</div>
@@ -102,7 +102,7 @@
         <% if (contribution.gift.active == false) && (contribution.paid == true) %>
           <div class='giftGroup'>
             <div class='lineItem'>
-              <strong class='title'><%= contribution.gift.title %></strong>
+              <strong class='title'><%= link_to contribution.gift.title, "/gifts/#{contribution.gift.id}" %></strong>
               <div class="money">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div>
               <div class="money">Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
             </div>
