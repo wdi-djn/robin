@@ -1,5 +1,5 @@
 <div class="top-bar-bg">
-  <div class="contain-to-grid fixed">
+  <div class="contain-to-grid">
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
@@ -24,31 +24,33 @@
   </div>
 </div>
 
-<div class="row">
-  <ul class="menu small-12">
-      <div class="small-12 medium-6 columns large-4 right">
-        <% if current_user == nil %>
-            <!-- LOGIN FORM STARTS -->
-            <!--  move to partial -->
-            <%= render "/devise/sessions/form" %>
-            <%= render "/devise/shared/links" %>
-                  
-            <!-- LOGIN FORM ENDS -->
-          <li>
-            <%= link_to "Create Account", new_user_registration_path %>    
-          </li>
-        <% else %>
-          <li>
-            <%= link_to "Profile", show_user_path(current_user) %>
-          <li>  
-            <%= link_to "Create Gift Group", new_gift_path %>
-          </li>
-          <li>
-            <%= link_to "Sign Out", sign_out_path, method: 'delete'  %> 
-          </li>
-        <% end %>
-      </div>
 
-  </ul>
+<div class="menu-container">
+  <div class="contain-to-grid">
+    <div class="row">
+      <ul class="menu large-4 columns right">
+          <% if current_user == nil %>
+              <!-- LOGIN FORM STARTS -->
+              <!--  move to partial -->
+              <%= render "/devise/sessions/form" %>
+                    
+              <!-- LOGIN FORM ENDS -->
+            <li>
+              <%= link_to "Create Account", new_user_registration_path %>    
+            </li>
+          <% else %>
+            <li>
+              <%= link_to "Profile", show_user_path(current_user) %>
+            </li>
+            <li>  
+              <%= link_to "Create Gift Group", new_gift_path %>
+            </li>
+            <li>
+              <%= link_to "Sign Out", sign_out_path, method: 'delete'  %> 
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
 </div>
 
