@@ -25,13 +25,12 @@ $navbar-height: 50px;
 }
 
 .menu li {
-  padding: 2em 0;
+  padding: 1em 0;
+  border-bottom: $border;
 }
 
 .menu {
   display: none;
-  width: 100vw;
-  position: absolute;
   top: $navbar-height;
   background-color: $trans-white;
 }
