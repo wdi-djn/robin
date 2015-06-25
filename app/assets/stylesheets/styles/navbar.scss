@@ -1,6 +1,6 @@
 // VARIABLES
 $navbar-height: 50px;
-$menu-width: span(12);
+// $menu-width: span(12);
 
 
 // NAV
@@ -15,7 +15,7 @@ $menu-width: span(12);
 }
 
 .navbar .main {
-  @include container;
+  // @include container;
   position: relative;
   display: flex; 
   height: 100%;
