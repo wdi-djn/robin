@@ -3,15 +3,24 @@ $navbar-height: 50px;
 
 // NAV
 .top-bar {
-  // position: fixed;
+  z-index: 998;
+  background-color: $trans-white;
+  width: 100%;
 }
 
 .top-bar-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     background-color: $trans-white;
     border-bottom: $border;
     margin: 0;
     z-index: 999;
+}
+
+.content {
+  padding-top: $navbar-height;
 }
 
 .menu-container {
