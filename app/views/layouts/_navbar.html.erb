@@ -24,14 +24,13 @@
   </div>
 </div>
 
-<div class="row">
+<div class="menu-container row">
   <ul class="menu small-12">
       <div class="small-12 medium-6 columns large-4 right">
         <% if current_user == nil %>
             <!-- LOGIN FORM STARTS -->
             <!--  move to partial -->
             <%= render "/devise/sessions/form" %>
-            <%= render "/devise/shared/links" %>
                   
             <!-- LOGIN FORM ENDS -->
           <li>
