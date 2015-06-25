@@ -13,80 +13,24 @@
         <% @current_user.contributions.each do |contribution| %>
           <% if contribution.gift.active == true %>
             <div class='lineItem'>
-              <%= contribution.gift.title %>
-
-              <% timeLeft = contribution.gift.due_date - Time.now %>
-              <% minsLeft = timeLeft/60 %>
-              <% hoursLeft = minsLeft/60 %>
-              <% daysLeft = hoursLeft/24 %>
-              <% if daysLeft < 1 %>
-                <% if hoursLeft < 1 %>
-                  <%= minsLeft.round %> minutes remaining
-                <% else %>
-                  <%= hoursLeft.round %> hours remaining
-                <% end %>
-              <% else %>
-                <%= daysLeft.round %> days remaining
-              <% end %>
-
-              Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
-
+              <%= render partial: 'contributionTime', locals: {contribution: contribution} %>
               <% if (contribution.gift.can_fund == true) && (contribution.paid == false) %>
-                <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
-                  <%= hidden_field(:contribution, :id, value: contribution.id) %>
-                  <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key= <%= contribution.gift.user.publishable_key %>
-                    data-amount= <%= contribution.amount.to_i %>
-                    data-name="Demo Site"
-                    data-description="2 widgets ($20.00)"
-                    data-image="/128x128.png">
-                  </script>
-                <% end %>
+                <%= render partial: 'formStripe', locals: {contribution: contribution} %>
               <% elsif (contribution.gift.can_fund == false) %>
                 <div class='fundStatus'>Awaiting More Funds</div>
               <% else %>
-                <div class='funded'>FUNDED</div>
+                <div class='funded'>PAID</div>
               <% end %>
             </div>
-
-
-          <% elsif (contribution.gift.active == false) && (contribution.gift.can_fund == true) %>
-
-
+          <% elsif (contribution.gift.active == false) && (contribution.gift.can_fund == true) && (contribution.paid == true) %>
+              <!-- do nothing -->
+          <% else %>
             <div class='lineItem'>
-              <%= contribution.gift.title %>
-
-              <% timeLeft = contribution.gift.due_date - Time.now %>
-              <% minsLeft = timeLeft/60 %>
-              <% hoursLeft = minsLeft/60 %>
-              <% daysLeft = hoursLeft/24 %>
-              <% if daysLeft < 1 %>
-                <% if hoursLeft < 1 %>
-                  <%= minsLeft.round %> minutes remaining
-                <% else %>
-                  <%= hoursLeft.round %> hours remaining
-                <% end %>
+              <%= render partial: 'contributionTime', locals: {contribution: contribution} %>
+              <% if contribution.paid == false %>
+                <%= render partial: 'formStripe', locals: {contribution: contribution} %>
               <% else %>
-                <%= daysLeft.round %> days remaining
-              <% end %>
-
-              Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
-
-              <% if (contribution.gift.can_fund == true) && (contribution.paid == false) %>
-                <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
-                  <%= hidden_field(:contribution, :id, value: contribution.id) %>
-                  <script
-                    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                    data-key= <%= contribution.gift.user.publishable_key %>
-                    data-amount= <%= contribution.amount.to_i %>
-                    data-name="Demo Site"
-                    data-description="2 widgets ($20.00)"
-                    data-image="/128x128.png">
-                  </script>
-                <% end %>
-              <% else %>
-                <div class='fundStatus'>FUNDED</div>
+                <div class='fundStatus'>PAID</div>
               <% end %>
             </div>
           <% end %>
@@ -94,6 +38,7 @@
       </div>
     <% end %>
   </div>
+
 
   <br><br>
 
@@ -105,88 +50,67 @@
     <% else %>
       <div class='giftGroup'>
         <% @current_user.gifts.each do |gift| %>
-          <% if gift.due_date > Time.now %>
+          <% if gift.active == true %>
             <div class='lineItem'>
-              <%= gift.title %>
-
-              <% if gift.due_date > Time.now %>
-                <% timeLeft = gift.due_date - Time.now %>
-                <% minsLeft = timeLeft/60 %>
-                <% hoursLeft = minsLeft/60 %>
-                <% daysLeft = hoursLeft/24 %>
-                <% if daysLeft < 1 %>
-                  <% if hoursLeft < 1 %>
-                    <%= minsLeft.round %> minutes remaining
-                  <% else %>
-                    <%= hoursLeft.round %> hours remaining
-                  <% end %>
-                <% else %>
-                  <%= daysLeft.round %> days remaining
-                <% end %>
-
-                Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
-              <% end %>
-
+              <%= render partial: 'giftTime', locals: {gift: gift} %>
             </div>
           <% end %>
         <% end %>
       </div>
     <% end %>
   </div>
-
-
+  
 
   <br><br>
-
 
 
   <h2>Archive</h2>
   <% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
     <small>Empty</small>
-
   <% else %>
-
     <% if @current_user.gifts.count != 0 %>
       <h4>Your Gifting Groups</h4>
       <div class='dashboardGroup'>
-
       <% @current_user.gifts.each do |gift| %>
-
-        <% if Time.now > gift.due_date %>
+        <% if gift.active == false %>
           <div class='giftGroup'>
             <div class='lineItem'>
-              <%= gift.title %>
-              Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+              <strong class='title'><%= gift.title %></strong>
+              <div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+              <% if gift.current_total < gift.price %>
+                <div class='fundStatus'>MISSED</div>
+              <% else %>
+                <div class='fundStatus'>FUNDED</div>
+              <% end %>
             </div>
           </div>
+          <br>
         <% end %>
-
       <% end %>
       <br><br>
       </div>
-
     <% end %>
+
+
 
     <% if @current_user.gifts.count != 0 %>
       <h4>Your Contributions</h4>
       <div class='dashboardGroup'>
-
       <% @current_user.contributions.each do |contribution| %>
-
-        <% if Time.now > contribution.gift.due_date %>
+        <% if (contribution.gift.active == false) && (contribution.paid == true) %>
           <div class='giftGroup'>
             <div class='lineItem'>
-              <%= contribution.gift.title %>
-              Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
+              <strong class='title'><%= contribution.gift.title %></strong>
+              <div class="money">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div>
+              <div class="money">Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
             </div>
           </div>
+          <br>
         <% end %>
-
       <% end %>
       <br><br>
       </div>
     <% end %>
-
   <% end %>
 
 <% end %>
