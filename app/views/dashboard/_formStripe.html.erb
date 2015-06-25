@@ -1,0 +1,11 @@
+<%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
+  <%= hidden_field(:contribution, :id, value: contribution.id) %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key= <%= contribution.gift.user.publishable_key %>
+    data-amount= <%= contribution.amount.to_i %>
+    data-name="Demo Site"
+    data-description="2 widgets ($20.00)"
+    data-image="/128x128.png">
+  </script>
+<% end %>
