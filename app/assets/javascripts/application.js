@@ -12,10 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
-// Loads all Semantic javascripts
-//= require semantic-ui
+
 
 
 $(document).on("page:change", function() {
@@ -47,3 +47,5 @@ var checkActive = function() {
 };
 
 
+
+$(function(){ $(document).foundation(); });

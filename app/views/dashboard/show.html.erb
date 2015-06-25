@@ -1,11 +1,11 @@
 <div class="ui col">
   <h1>Welcome <%= @current_user.username %>!</h1>
-
   <h2>Gifts to Fund</h2>
 </div>
+
   <div class='dashboardGroup'>
     <% if @current_user.contributions.count == 0 %>
-      <small>No Gifts to Fund</small>
+      <small>No Gifts to Fund</small>asdasd
     <% else %>
       <div class='giftGroup'>
         <% @current_user.contributions.each do |contribution| %>

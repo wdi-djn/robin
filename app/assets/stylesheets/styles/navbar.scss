@@ -1,80 +1,78 @@
-// VARIABLES
-$navbar-height: 50px;
-// $menu-width: span(12);
+// // VARIABLES
+// $navbar-height: 50px;
+
+// // NAV
+// .navbar {
+//   width: 100vw;
+//   position: fixed;
+//   left: 0;
+//   top: 0;
+//   height: $navbar-height;
+//   background-color: rgba(255,255,255,0.90);
+//   border-bottom: $border;
+//   z-index: 999;
+// }
+
+// // .navbar .main {
+// //   position: relative;
+// //   display: flex; 
+// //   height: 100%;
+// // }
+
+// .menu-button {
+//   z-index: 999;
+//   position: absolute;
+//   top: 0;
+//   right: 0;
+//   padding: 0 1em;
+//   height: $navbar-height;
+//   border-right: $border;
+//   border-left: $border;
+// }
+
+// .menu li {
+//   // padding: 2em 0;
+// }
+
+// .menu {
+//   display: none;
+//   background-color: $white;
+//   z-index: 1;
+//   width: 100vw;
+//   position: fixed;
+//   top: $navbar-height;
+//   // width: $menu-width;
+//   // height: 100vh;
+// }
+
+// .home-button {
+//   position: absolute;
+//   height: 100%;
+//   border-right: $border;
+//   border-left: $border;   
+// }
 
 
-// NAV
-.navbar {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  height: $navbar-height;
-  background-color: rgba(255,255,255,0.90);
-  border-bottom: $border;
-  z-index: 999;
-}
+// .content {
+//   max-width: 1400px;
+//   position: relative;
+//   top: $navbar-height;
+//   min-height: 100vh;
+// }
 
-.navbar .main {
-  // @include container;
-  position: relative;
-  display: flex; 
-  height: 100%;
-}
+// .main a {
+//   color: $main;
+//   text-decoration: none;
+// }
 
-.menu-button {
-  z-index: 999;
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1em;
-  height: $navbar-height;
-  border-right: $border;
-  border-left: $border;
-}
+// .main .home-button h1 {
+//   // font-size: 1.7em;
+//   // margin-top: .3em;
+// }
 
-.menu li {
-  padding: 2em 0;
-}
-
-.menu {
-  display: none;
-  background-color: $white;
-  z-index: 1;
-  width: 100vw;
-  position: fixed;
-  top: $navbar-height;
-  // width: $menu-width;
-  // height: 100vh;
-}
-
-.home-button {
-  position: absolute;
-  height: 100%;
-  // border-right: $border;
-  // border-left: $border;   
-}
-
-
-.content {
-  max-width: 1400px;
-  position: relative;
-  top: $navbar-height;
-  min-height: 100vh;
-}
-
-.main a {
-  color: $main;
-  text-decoration: none;
-}
-
-.main .home-button h1 {
-  font-size: 1.7em;
-  margin-top: .3em;
-}
-
-.main h2 {
-  margin-top: 1em;
-}
+// .main h2 {
+//   // margin-top: 1em;
+// }
 
 
 

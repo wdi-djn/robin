@@ -8,7 +8,6 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'normalize-rails'
-gem 'susy'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -42,7 +41,8 @@ gem 'omniauth-stripe-connect'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'whenever', :require => false
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+
+gem 'foundation-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
