@@ -4,6 +4,6 @@ $(document).on("page:change", function() {
 
 var menuButton = function() {
   $(".menu-button").on("click", function(e) {
-    $(".site-wrapper").toggleClass("show-menu");
+    $(".menu").slideToggle();
   });
 };

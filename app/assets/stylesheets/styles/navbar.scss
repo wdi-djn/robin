@@ -22,6 +22,7 @@ $navbar-height: 50px;
 }
 
 .menu-button {
+  z-index: 999;
   position: absolute;
   top: 0;
   right: 0;
@@ -36,12 +37,14 @@ $navbar-height: 50px;
 }
 
 .menu {
+  display: none;
+  background-color: $white;
+  z-index: 1;
   width: 100vw;
-  position: absolute;
-  top: 0;
-  right: - 100vw;
+  position: fixed;
+  top: $navbar-height;
   // width: $menu-width;
-  height: 100vh;
+  // height: 100vh;
 }
 
 .home-button {
@@ -51,27 +54,12 @@ $navbar-height: 50px;
   // border-left: $border;   
 }
 
-.site-wrapper.show-menu .site-canvas {
-  -webkit-transform: translateX(- 100vw);
-  transform: translateX(- 100vw);
-}
 
-// off canvas setup
-.site-wrapper {
-  width: 100vw;
+.content {
+  max-width: 1400px;
   position: relative;
   top: $navbar-height;
-  overflow-x: hidden;  
   min-height: 100vh;
-}
-
-.site-canvas {
-  width: 100vw;
-  position: absolute;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
 }
 
 .main a {
