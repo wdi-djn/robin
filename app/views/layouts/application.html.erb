@@ -1,67 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hippopotamus</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
 
-  <nav class="navbar">
-    <ul class="main">
-      <li>
-        <div class="home-button">
-          <h1><%= link_to "Home", root_path %></h1>
-        </div>
-      </li> 
-      <li>
-        <div class="menu-button">
-          <% if current_user %> 
-            <h2><a href="#">Menu</a></h2>
-          <% else %>
-            <h2><a href="#">Sign In</a></h2>
-          <% end %>
-        </div>    
-      </li>
-    </ul>
-  </nav>
+    <%= render partial: "/layouts/navbar" %>
 
-  <div class="site-wrapper">
-    <div class="site-canvas">
-      <!-- OFF CANVAS MENU STARTS -->
-      <ul class="menu open">
-        <div class="content">
-          <% if current_user == nil %>
-              <!-- LOGIN FORM STARTS -->
-              <!--  move to partial -->
-              <%= render "/devise/sessions/form" %>
-                    
-              <!-- LOGIN FORM ENDS -->
-            <li>
-              <%= link_to "Create Account", new_user_registration_path %>    
-            </li>
-          <% else %>
-            <li>
-              <%= link_to "Profile", show_user_path(current_user) %>
-            </li>
-            <li>  
-              <%= link_to "Create Gift Group", new_gift_path %>
-            </li>
-            <li>
-              <%= link_to "Sign Out", sign_out_path, method: 'delete'  %> 
-            </li>
-          <% end %>
-        </div> 
-      </ul>   
-      <!-- OFF CANVAS MENU ENDS -->
-      <!-- MAIN CONTENT STARTS -->
-      <div class="content">
-        <%= yield %>
-      </div>
-      <!-- MAIN CONTENT ENDS -->
-    </div>
-  </div>
+    <%= yield %>
+    
   <%= console %>
   </body>
 </html>

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require turbolinks
 //= require_tree .
 
@@ -45,3 +46,5 @@ var checkActive = function() {
 };
 
 
+
+$(function(){ $(document).foundation(); });
