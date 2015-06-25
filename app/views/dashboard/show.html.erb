@@ -22,6 +22,7 @@
                 <div class='funded'>PAID</div>
               <% end %>
             </div>
+            <br>
           <% elsif (contribution.gift.active == false) && (contribution.gift.can_fund == true) && (contribution.paid == true) %>
               <!-- do nothing -->
           <% else %>
@@ -33,6 +34,7 @@
                 <div class='fundStatus'>PAID</div>
               <% end %>
             </div>
+            <br>
           <% end %>
         <% end %>
       </div>

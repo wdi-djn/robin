@@ -1,5 +1,7 @@
-<%= gift.title %>
+<strong class='title'><%= gift.title %></strong>
 
+<div class='money'>
+Time: 
 <% if gift.due_date > Time.now %>
   <% timeLeft = gift.due_date - Time.now %>
   <% minsLeft = timeLeft/60 %>
@@ -7,7 +9,11 @@
   <% daysLeft = hoursLeft/24 %>
   <% if daysLeft < 1 %>
     <% if hoursLeft < 1 %>
-      <%= minsLeft.round %> minutes remaining
+      <% if minsLeft > 0 %>
+        <%= minsLeft.round %> minutes remaining
+      <% else %>
+        Contribution Period Over
+      <% end %>
     <% else %>
       <%= hoursLeft.round %> hours remaining
     <% end %>
@@ -15,5 +21,6 @@
     <%= daysLeft.round %> days remaining
   <% end %>
 <% end %>
+</div>
 
-  Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%>
+<div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>

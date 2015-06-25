@@ -1,5 +1,6 @@
-<%= contribution.gift.title %>
+<strong class='title'><%= contribution.gift.title %></strong>
 
+<div class='money'>
 Time:
 <% timeLeft = contribution.gift.due_date - Time.now %>
 <% minsLeft = timeLeft/60 %>
@@ -18,7 +19,8 @@ Time:
 <% else %>
   <%= daysLeft.round %> days remaining
 <% end %>
+</div>
 
-Your Contribution: <%= number_to_currency(contribution.amount/1000) %>
+<div class='money'>Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div>
 
-Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%>
+<div class='money'>Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
