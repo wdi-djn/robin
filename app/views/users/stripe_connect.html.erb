@@ -1,3 +1,5 @@
 You must first connect a stripe account to create a gift
-
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
 <%= link_to "STRIPE CONNECT", user_omniauth_authorize_path(:stripe_connect) %>
