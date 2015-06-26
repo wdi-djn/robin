@@ -13,7 +13,7 @@
         <ul class="right">
           <li class="has-dropdown menu-button">
             <% if current_user %> 
-              <a href="#">Menu</a>
+              <a href="#"><%= image_tag gravatar_url(current_user.email, 100), alt: "" %></a>
             <% else %>
               <a href="#">Sign In</a>
             <% end %>
@@ -38,7 +38,6 @@
             </li>
           <% else %>
             <!-- USER PROFILE IF LOGGED IN -->
-            <%= image_tag gravatar_url(current_user.email, 300), alt: "" %>
             <%= current_user.first_name %> <%= current_user.last_name %>
             <%= current_user.username %>
             <%= current_user.email %>
