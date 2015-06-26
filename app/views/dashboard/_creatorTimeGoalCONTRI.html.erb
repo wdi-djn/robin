@@ -1,6 +1,7 @@
-<strong class='title'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></strong>
-
-<div class='money'>
+<div class='money medium-4 small-6 column'>
+Creator: <%= contribution.user.username %>
+</div>
+<div class='money medium-5 small-6 column'>
 Time:
 <% timeLeft = contribution.gift.due_date - Time.now %>
 <% minsLeft = timeLeft/60 %>
@@ -11,7 +12,7 @@ Time:
       <% if minsLeft > 0 %>
         <%= minsLeft.round %> minutes remaining
       <% else %>
-        Contribution Period Over
+        Contribution Over
       <% end %>
   <% else %>
     <%= hoursLeft.round %> hours remaining
@@ -21,6 +22,4 @@ Time:
 <% end %>
 </div>
 
-<div class='money'>Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div>
-
-<div class='money'>Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
+<div class='money medium-3 column'>Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>

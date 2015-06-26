@@ -1,3 +1,4 @@
+<div class='paymentButton medium-3 column'>
 <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
   <%= hidden_field(:contribution, :id, value: contribution.id) %>
   <script
@@ -9,3 +10,4 @@
     data-image="/128x128.png">
   </script>
 <% end %>
+</div>

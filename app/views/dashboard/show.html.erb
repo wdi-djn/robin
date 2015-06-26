@@ -1,52 +1,81 @@
-<h1 class="row">Welcome <%= @current_user.username %>!</h1>
+<div class='row'>
+<h1 class="welcomeDash columns">Welcome <%= @current_user.username %>!</h1>
+</div>
 
-<div class='dashboardGroup row'>
-  <h2>Gifts to Fund</h2>
+<div class='dashboardGroup'>
+  <div class='row'>
+    <h2 class="groupTitle columns">Gifts to Fund</h2>
+  </div>
   <% if @current_user.contributions.count == 0 %>
-    <p>No Gifts to Fund</p>
+    <div class='row'>
+      <p class='columns'>No Gifts to Fund</p>
+    </div>
   <% else %>
     <div class='giftGroup'>
       <% @current_user.contributions.each do |contribution| %>
         <% if contribution.gift.active == true %>
-          <div class='lineItem'>
-            <%= render partial: 'contributionTime', locals: {contribution: contribution} %>
+          <div class='lineItem row'>
+            <%= render partial: 'titleContributionCONTRI', locals: {contribution: contribution} %>
             <% if (contribution.gift.can_fund == true) && (contribution.paid == false) %>
               <%= render partial: 'formStripe', locals: {contribution: contribution} %>
             <% elsif (contribution.gift.can_fund == false) %>
-              <div class='fundStatus'>Awaiting More Funds</div>
+              <div class='fundStatus medium-3 columns'>Awaiting More Funds</div>
             <% else %>
-              <div class='funded'>PAID</div>
+              <div class='fundPaid medium-3 columns left'>PAID</div>
             <% end %>
           </div>
-          <br>
+          <div class='row'>
+            <%= render partial: 'creatorTimeGoalCONTRI', locals: {contribution: contribution} %>
+          </div>
         <% elsif (contribution.gift.active == false) && (contribution.gift.can_fund == true) && (contribution.paid == true) %>
             <!-- do nothing -->
         <% else %>
-          <div class='lineItem'>
-            <%= render partial: 'contributionTime', locals: {contribution: contribution} %>
+          <div class='lineItem row'>
+            <%= render partial: 'titleContributionCONTRI', locals: {contribution: contribution} %>
             <% if contribution.paid == false %>
               <%= render partial: 'formStripe', locals: {contribution: contribution} %>
             <% else %>
-              <div class='fundStatus'>PAID</div>
+              <div class='fundPaid medium-3 columns left'>PAID</div>
             <% end %>
           </div>
-          <br>
+          <div class='row'>
+            <%= render partial: 'creatorTimeGoalCONTRI', locals: {contribution: contribution} %>
+          </div>
         <% end %>
       <% end %>
     </div>
   <% end %>
 </div>
 
-<div class='dashboardGroup row'>
-  <h2>Gift Groups You Started</h2>
+
+
+
+
+
+
+
+<div class='dashboardGroup'>
+  <div class='row'>
+    <h2 class="groupTitle columns">Gift Groups You Started</h2>
+  </div>
   <% if @current_user.gifts.count == 0 %>
-    <p>You haven't created a gift to fund yet</p>
+    <div class='row'>
+      <p class='columns'>You haven't created a gift to fund yet</p>
+    </div>
   <% else %>
     <div class='giftGroup'>
       <% @current_user.gifts.each do |gift| %>
         <% if gift.active == true %>
-          <div class='lineItem'>
-            <%= render partial: 'giftTime', locals: {gift: gift} %>
+          <div class='lineItem row'>
+            <div class='titleDash medium-9 columns'><%= link_to gift.title, gift_path(gift) %></div>
+            <% if gift.can_fund == true %>
+              <div class='fundStatus medium-3 columns'>Awaiting Transfers</div>
+            <% else %>
+              <div class='fundStatus medium-3 columns'>Awaiting More Funds</div>
+            <% end %>
+          </div>
+          <div class='row'>
+            <%= render partial: 'creatorTimeGoalGIFT', locals: {gift: gift} %>
           </div>
         <% end %>
       <% end %>
@@ -54,46 +83,66 @@
   <% end %>
 </div>
 
-<div class='dashboardGroup row'>
-  <h2>Archive</h2>
+<br>
+
+
+
+
+<div class='dashboardGroup'>
+  <div class='row'>
+    <h2 class="groupTitle columns">Archive</h2>
+  </div>
   <% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
-    <p>Empty</p>
+    <div class='row'>
+      <p class='columns'>Empty</p>
+    </div>
   <% else %>
+
+
     <% if @current_user.gifts.count != 0 %>
-      <h4>Your Gifting Groups</h4>
+      <div class='row'>
+        <h4 class="subGroupTitle columns">Previous Gifting Groups</h4>
+      </div>
       <div class='dashboardGroup'>
       <% @current_user.gifts.each do |gift| %>
         <% if gift.active == false %>
           <div class='giftGroup'>
-            <div class='lineItem'>
-              <strong class='title'><%= link_to gift.title, "/gifts/#{gift.id}" %></strong>
-              <div class='money'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+            <div class='lineItem row'>
+              <div class='titleDash medium-9 columns'><%= link_to gift.title, gift_path(gift) %></div>
               <% if gift.current_total < gift.price %>
-                <div class='fundStatus'>MISSED</div>
+                <div class='fundStatus medium-3 columns'>MISSED</div>
               <% else %>
-                <div class='fundStatus'>FUNDED</div>
+                <div class='fundPaid medium-3 columns left'>PAID</div>
               <% end %>
+            </div>
+            <div class='row'>
+              <div class='money medium-12 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
             </div>
           </div>
           <br>
         <% end %>
       <% end %>
-      <br><br>
       </div>
     <% end %>
 </div>
 
-<div class='dashboardGroup row'>
+<div class='dashboardGroup'>
   <% if @current_user.gifts.count != 0 %>
-    <h4>Your Contributions</h4>
+    <div class='row'>
+      <h4 class="subGroupTitle columns">Paid Contributions</h4>
+    </div>
     <% @current_user.contributions.each do |contribution| %>
       <% if (contribution.gift.active == false) && (contribution.paid == true) %>
         <div class='giftGroup'>
-          <div class='lineItem'>
-            <strong class='title'><%= link_to contribution.gift.title, "/gifts/#{contribution.gift.id}" %></strong>
-            <div class="money">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div>
-            <div class="money">Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
+          <div class='lineItem row'>
+            <div class='titleDash medium-4 columns'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></div>
+            <div class="money medium-5 columns">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div> 
           </div>
+
+          <div class='row'>
+            <div class="money columns">Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
+          </div>
+
         </div>
         <br>
       <% end %>

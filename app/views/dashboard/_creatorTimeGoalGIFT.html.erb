@@ -1,0 +1,25 @@
+<div class='money medium-4 column'>
+Creator: <%= gift.user.username %>
+</div>
+<div class='money medium-5 column'>
+Time: 
+<% timeLeft = gift.due_date - Time.now %>
+<% minsLeft = timeLeft/60 %>
+<% hoursLeft = minsLeft/60 %>
+<% daysLeft = hoursLeft/24 %>
+<% if daysLeft < 1 %>
+  <% if hoursLeft < 1 %>
+    <% if minsLeft > 0 %>
+      <%= minsLeft.round %> minutes remaining
+    <% else %>
+      Contribution Over
+    <% end %>
+  <% else %>
+    <%= hoursLeft.round %> hours remaining
+  <% end %>
+<% else %>
+  <%= daysLeft.round %> days remaining
+<% end %>
+</div>
+
+<div class='money medium-3 column'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
