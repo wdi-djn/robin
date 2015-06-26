@@ -1,13 +1,6 @@
 class Gift < ActiveRecord::Base
   belongs_to :user
 
-  def active?
-    if Date.new >= self.due_date 
-      self.active = false
-      self.save
-    end
-  end
-
   has_many :contributions
   after_create :confirm_new_gift
 
@@ -39,7 +32,7 @@ class Gift < ActiveRecord::Base
   			  message: "is not valid, please enter the full link" }
   
 
-    def confirm_new_gift
+  def confirm_new_gift
     GiftMailer.new_gift_email(self).deliver
     puts "//////////"
     puts "//////////"
