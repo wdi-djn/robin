@@ -5,6 +5,7 @@ class Gift < ActiveRecord::Base
     if Date.new >= self.due_date 
       self.active = false
       self.save
+      GiftMailer.gift_funded_email(self).deliver
     end
   end
 
