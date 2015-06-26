@@ -1,14 +1,6 @@
 class Gift < ActiveRecord::Base
   belongs_to :user
 
-  def active?
-    if Date.new >= self.due_date 
-      self.active = false
-      self.save
-      GiftMailer.gift_funded_email(self).deliver
-    end
-  end
-
   has_many :contributions
   after_create :confirm_new_gift
 
