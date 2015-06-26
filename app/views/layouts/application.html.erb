@@ -4,18 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hippopotamus</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => false %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => false %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => false %>
     <%= csrf_meta_tags %>
   </head>
   <body>
 
     <%= render partial: "/layouts/navbar" %>
+    
     <div class="content">
       <%= yield %>
     </div>
-<%= console %>
+
   </body>
 </html>
 

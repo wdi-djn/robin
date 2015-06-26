@@ -1,66 +1,99 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="row">
+  <div class="medium-6 columns">
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  </div>
+</div>  
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div class="field">
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </div>
-
-  <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= devise_error_messages! %>
+    </div>
   </div>
   
-  <div class="field">
-    <%= f.label :last_name %>
-    <%= f.text_field :last_name %>
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %>
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+    </div>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <div class="row">
+      <div class="medium-6 columns">
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      </div>
+    </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label 'Optional New Password' %>
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label 'Optional New Password' %>
+      <%= f.password_field :password, autocomplete: "off" %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label 'New Password Confirmation' %>
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-  <div class="field">
-    <%= f.label :current_password %>
-    <%= f.password_field :current_password, autocomplete: "off" %>
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label 'New Password Confirmation' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Update" %>
+  <div class="row">
+    <div class="field medium-6 columns">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, autocomplete: "off" %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="actions medium-6 columns">
+      <%= f.submit "Update" %>
+    </div>
   </div>
 <% end %>
 
 <br>
 
 <% if current_user.publishable_key %>
-  <div class='removeAccount'>
-  <a href='javascript:void(0)' class='dropDown'>Want to disconnect stripe?</a>
-    <%= button_to "Disconnect stripe now", stripe_disconnect_path, :method => :put %>
+  <div class="row">
+    <div class="medium-6 columns">
+      <%= link_to "Disconnect Stripe", stripe_disconnect_path, :method => :put %>
+    </div>
   </div>
-<% else %>
-  <div class='stripeStatus'>no stripe account connected</div>
 <% end %>
 
-<div class='removeAccount'>
-<a href='javascript:void(0)' class='dropDown'>Want to delete account?</a>
-  <p class='deleteButton'>Unhappy? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Sorry to see you go. Are you sure?" }, method: :delete %></p>
+<div class="row">
+  <div class="medium-6 columns">
+    <%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Sorry to see you go. Are you sure?" }, method: :delete %>
+  </div>
 </div>
 
-
-<%= link_to "Back", :back %>
+<div class="row">
+  <div class="medium-6 columns">
+    <%= link_to "Back", :back %>
+  </div>
+</div>
