@@ -117,6 +117,8 @@ $oil         : #333333;
 $jet         : #222222;
 $black       : #000000;
 
+$purple      : rgb(103,19,104);
+$orange      : rgb(229,122,68);
 $trans-white : rgba(255,255,255,0.90);
 
 // BORDERS
@@ -126,7 +128,7 @@ $border: 1px solid $silver;
 // We use these as default colors throughout
 // $primary-color: #008CBA;
 // $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
+$alert-color: $purple;
 // $success-color: #43AC6A;
 // $warning-color: #f08a24;
 // $info-color: #a0d3e8;
@@ -467,7 +469,7 @@ $border: 1px solid $silver;
 // $button-font-align: center;
 
 // We use these to control various hover effects.
-// $button-function-factor: -20%;
+$button-function-factor: -20%;
 
 // We use these to control button border styles.
 // $button-border-width: 0;
@@ -479,8 +481,8 @@ $border: 1px solid $silver;
 // $secondary-button-border-color: $secondary-button-bg-hover;
 // $success-button-bg-hover: scale-color($success-color, $lightness: $button-function-factor);
 // $success-button-border-color: $success-button-bg-hover;
-// $alert-button-bg-hover: scale-color($alert-color, $lightness: $button-function-factor);
-// $alert-button-border-color: $alert-button-bg-hover;
+$alert-button-bg-hover: scale-color($purple, $lightness: $button-function-factor);
+$alert-button-border-color: $alert-button-bg-hover;
 // $warning-button-bg-hover: scale-color($warning-color, $lightness: $button-function-factor);
 // $warning-button-border-color: $warning-button-bg-hover;
 // $info-button-bg-hover: scale-color($info-color, $lightness: $button-function-factor);
