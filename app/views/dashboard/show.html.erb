@@ -19,7 +19,7 @@
             <% if (contribution.gift.can_fund == true) && (contribution.paid == false) %>
               <%= render partial: 'formStripe', locals: {contribution: contribution} %>
             <% elsif (contribution.gift.can_fund == false) %>
-              <div class='fundStatus medium-3 small-6 columns'>Awaiting More Funds</div>
+              <div class='fundPending medium-3 small-6 columns left'>Pending Funds</div>
             <% else %>
               <div class='fundPaid medium-3 small-6 columns left'>PAID</div>
             <% end %>
@@ -46,7 +46,7 @@
     </div>
   <% end %>
 </div>
-
+<br>
 
 
 
@@ -70,9 +70,9 @@
             <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
             <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
             <% if gift.can_fund == true %>
-              <div class='fundStatus medium-3 small-6 columns'>Awaiting Transfers</div>
+              <div class='fundPending medium-3 small-6 columns left' id='pendingTransfer'>Pending Transfers</div>
             <% else %>
-              <div class='fundStatus medium-3 small-6 columns'>Awaiting More Funds</div>
+              <div class='fundPending medium-3 small-6 columns left'>Pending Funds</div>
             <% end %>
           </div>
           <div class='row'>
@@ -111,7 +111,7 @@
               <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
               <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
-                <div class='fundStatus medium-3 small-6 columns'>MISSED</div>
+                <div class='fundMiss medium-3 small-6 columns left'>MISSED</div>
               <% else %>
                 <div class='fundFunded medium-3 small-6 columns left'>FUNDED</div>
               <% end %>
