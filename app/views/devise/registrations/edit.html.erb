@@ -76,7 +76,7 @@
   </div>
 <% end %>
 
-<br>
+<br><br>
 
 <% if current_user.publishable_key %>
   <div class="row">
@@ -84,6 +84,7 @@
       <%= link_to "Disconnect Stripe", stripe_disconnect_path, :method => :put %>
     </div>
   </div>
+  <br>
 <% end %>
 
 <div class="row">
@@ -91,6 +92,7 @@
     <%= link_to "Delete account", registration_path(resource_name), data: { confirm: "Sorry to see you go. Are you sure?" }, method: :delete %>
   </div>
 </div>
+<br>
 
 <div class="row">
   <div class="medium-6 columns">

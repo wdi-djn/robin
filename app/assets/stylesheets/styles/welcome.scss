@@ -3,12 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 @import url(http://fonts.googleapis.com/css?family=Raleway);
 
-h2, h3 {
+.welcomeh2, .welcomeh3 {
 	font-family: 'Georgia', serif;
 	color: #fff
 }
 
-h4 {
+.welcomeh4 {
 	text-align: center;
 	margin-bottom: 1em;
 }
@@ -36,6 +36,7 @@ h4 {
 	position: relative;
 	top: 65vh;
 	padding: 50px;
+	padding-top: 35px;
 	font-size: 20px;
 	background-color: #fff;
 }
@@ -58,6 +59,8 @@ margin-top: 2em;
 }
 
 
-
+.plug {
+	text-align: center;
+}
 
 
