@@ -23,7 +23,7 @@
 
 <% if current_user.id == params[:id].to_i %>
   <% if current_user.publishable_key %>
-    <div class='stripeStatus'>stripe connected!</div> <br>
+    <div class='stripeStatus'>stripe connected!</div>
   <% end %>
   <%= link_to 'Edit', edit_user_registration_path(@user) %> |
 <% end %>
