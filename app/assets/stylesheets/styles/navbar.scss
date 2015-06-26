@@ -4,7 +4,6 @@ $navbar-height: 45px;
 // NAV
 .top-bar {
   z-index: 998;
-  background-color: $trans-white;
   width: 100%;
 }
 
@@ -14,6 +13,7 @@ $navbar-height: 45px;
     left: 0;
     width: 100vw;
     background-color: $trans-white;
+    border-top: $border;
     border-bottom: $border;
     margin: 0;
     z-index: 998;
