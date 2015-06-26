@@ -39,7 +39,7 @@ class Gift < ActiveRecord::Base
   			  message: "is not valid, please enter the full link" }
   
 
-    def confirm_new_gift
+  def confirm_new_gift
     GiftMailer.new_gift_email(self).deliver
     puts "//////////"
     puts "//////////"

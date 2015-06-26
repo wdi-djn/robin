@@ -21,8 +21,8 @@ textarea {
 
 label {
   position: absolute;
-  left: .6em;
-  top: .7em;
+  left: 1.6em;
+  top: .45em;
   color: rgba(0,0,0,0.5);
   transition: all 0.12s ease;
   -webkit-backface-visibility: hidden;
@@ -50,7 +50,7 @@ label {
 }
 
 .field .active {
-  -webkit-transform: translateX(-.6em) translateY(-2.1em);
-  transform: translateX(-.6em) translateY(-2.1em);
+  -webkit-transform: translateX(-2em) translateY(-2em);
+  transform: translateX(-.3em) translateY(-2em);
   font-size: .8em;
 }
