@@ -109,7 +109,7 @@
         <% if gift.active == false %>
             <div class='lineItem row'>
               <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
-              <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %> / <%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+              <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/100, unit: "$") %> / <%= number_to_currency(gift.price.to_d/100, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
                 <div class='fundMiss medium-3 small-6 columns left'>MISSED</div>
               <% elsif all_paid?(gift) %>
