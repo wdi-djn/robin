@@ -1,0 +1,54 @@
+
+
+.lineItem {
+  padding-top: 6px;
+  border-top: 1px solid $light-gray;
+}
+
+.welcomeDash{
+  font-weight: 500
+
+}
+
+.titleDash {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.groupTitle{
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.subGroupTitle{
+  font-size: 20px;
+}
+
+
+
+.dashboardGroup form{
+  padding: 0;
+  margin: 0
+}
+
+.paymentButton{
+  margin-bottom: -16px;
+}
+
+.fundPaid{
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: $lime-green;
+  height: 33px;
+  width: 90px;
+  line-height: 30px;
+  border: 1px solid #5CE65C;
+  border-radius: 5px;
+  font-weight: 400;
+  color: gray;
+  letter-spacing: 7px;
+}
+.money {
+  margin-bottom: 10px;
+}
