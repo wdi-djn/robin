@@ -36,7 +36,7 @@ var animateForm = function() {
 
 var checkActive = function() {
   $("input").each(function(i) {
-    if (this.value && this.value !== "" && (this.type == "text" || "text-area")) {
+    if (this.value && this.value !== "" && (this.type == "text" || this.type == "text-area")) {
       var label = $(this).closest("div").find("label");
       label.addClass("active");
     }
