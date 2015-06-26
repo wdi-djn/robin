@@ -30,18 +30,26 @@
     <div class="row">
       <ul class="menu medium-6 large-4 columns right">
           <% if current_user == nil %>
-              <!-- LOGIN FORM STARTS -->
-              <!--  move to partial -->
+              <!-- LOGIN FORM IF NOT LOGGED IN -->
               <%= render "/devise/sessions/form" %>
                     
-              <!-- LOGIN FORM ENDS -->
             <li>
               <%= link_to "Create Account", new_user_registration_path %>    
             </li>
           <% else %>
-            <li>
-              <%= link_to "Profile", show_user_path(current_user) %>
-            </li>
+            <!-- USER PROFILE IF LOGGED IN -->
+            <%= image_tag gravatar_url(current_user.email, 300), alt: "" %>
+            <%= current_user.first_name %> <%= current_user.last_name %>
+            <%= current_user.username %>
+            <%= current_user.email %>
+            
+            <% if current_user.publishable_key %>
+              <div class="stripeStatus">stripe connected!</div>
+            <% end %>
+            
+
+
+
             <li>  
               <%= link_to "Create Gift Group", new_gift_path %>
             </li>
