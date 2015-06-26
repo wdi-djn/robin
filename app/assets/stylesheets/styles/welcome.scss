@@ -1,12 +1,21 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Raleway);
 
+h2, h3 {
+	font-family: 'Georgia', serif;
+	color: #fff
+}
 
+h4 {
+	text-align: center;
+	margin-bottom: 2em;
+}
 
 .parallax-background {
 	background-color: $orange;
-	height: 70vh;
+	height: 100vh;
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
@@ -20,12 +29,12 @@
 	font-size: 3em;
 	color: #fff;
 	text-align: center;
-	margin-top: 5%;
+
 }
 .parallax-content {
 	max-width: 100%;
 	position: relative;
-	top: 70vh;
+	top: 90vh;
 	padding: 50px;
 	font-size: 20px;
 	background-color: #fff;
@@ -34,3 +43,21 @@
 .button {
 background-color: $purple;
 }
+
+.logo > img{
+height: 13em;
+margin-top: 2em;
+}
+
+.mainimg {
+	height:8em;
+	width: 8em;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2em;
+}
+
+
+
+
+
