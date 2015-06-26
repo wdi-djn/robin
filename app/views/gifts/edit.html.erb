@@ -1,6 +1,11 @@
-<h1>Editing Gift</h1>
+<div class="row">
+  <h1 class="medium-3 columns">Editing Gift</h1>
+</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @gift %> |
-<%= link_to 'Back', gifts_path %>
+<div class="row">
+  <%= link_to 'Show', @gift, class: "small-2 columns" %>
+  <%= link_to 'Back', gifts_path, class: "small-2 columns" %>
+</div>
+
