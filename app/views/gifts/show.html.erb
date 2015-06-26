@@ -1,46 +1,36 @@
-<!-- START CONTRIBUTE LINK -->
-<%= render partial: 'contributions/form' %>
-<!-- END CONTRIBUTE LINK -->
-
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @gift.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @gift.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= number_to_currency(@gift.price.to_d/100) %>
-</p>
-
-<p>
-  <strong>Gift url:</strong>
-  <%= @gift.gift_url %>
-</p>
-
-<p>
-  <strong>Due date:</strong>
-  <%= @gift.due_date %>
-</p>
-
-<p>
-  <strong>Recipient:</strong>
-  <%= @gift.recipient %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @gift.user_id %>
-</p>
-
+<div class="row">
+  <div class="medium-9 columns">
+    <h3 id="notice"><%= notice %></h3>
+    <div class="row">
+      <div class="medium-9 columns">
+        <h1>title<%= @gift.title %></h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-9 columns">
+        <h2>who<%= @gift.recipient %></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="medium-9 columns">
+          <p>desc<%= @gift.description %></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="medium-3 columns">
+    <h3><%= number_to_currency(@gift.price.to_d/100) %></h3>
+    <!-- START CONTRIBUTE LINK -->
+    <%= render partial: 'contributions/form' %>
+    <!-- END CONTRIBUTE LINK -->
+    <h6>Ends on <%= @gift.due_date.strftime("%m/%d/%Y") %></h6>
+  </div>
+</div>
 
 <% if current_user.id == @gift.user_id %>
-  <%= link_to 'Edit', edit_gift_path(@gift) %> |
+  <div class="row">
+    <div class="medium-9 large-1 columns">
+      <%= link_to 'Edit', edit_gift_path(@gift) %>
+    </div>
+  </div>
 <% end %>
-<%= link_to 'Back', dashboard_path %>

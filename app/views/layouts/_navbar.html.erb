@@ -3,7 +3,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <a href="/"><img src="../../assets/robin_logo2.svg"/></a>
+          <h1><%= link_to "Robin  ", root_path %></h1>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       </ul>
@@ -15,7 +15,7 @@
             <% if current_user %> 
               <a href="#" class="user-avatar"><%= image_tag gravatar_url(current_user.email, 100), alt: "user_avatar", class: "user-avatar" %></a>
             <% else %>
-              <a href="#" class="sign-in"><b>Sign In</a>
+              <a href="#" class"sign-in"><b>Sign In</ b></a>
             <% end %>
           </li>
         </ul>
@@ -38,9 +38,9 @@
             </li>
           <% else %>
             <!-- USER PROFILE IF LOGGED IN -->
-
-            <%= link_to current_user.username, show_user_path(current_user) %>
-
+            <%= current_user.first_name %> <%= current_user.last_name %>
+            <%= current_user.username %>
+            <%= current_user.email %>
             
             <% if current_user.publishable_key %>
               <div class="stripeStatus">stripe connected!</div>
