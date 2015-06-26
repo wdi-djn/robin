@@ -23,18 +23,13 @@ $(document).on("page:change", function() {
 });
 
 var animateForm = function() {
-  $("input").one("keypress", function() {
-    var label = $(this).closest("div").find("label");
-    label.addClass("active");
-  });
-
-  $("textarea").one("keypress", function() {
+  $("input" || "textarea").one("keypress", function() {
     var label = $(this).closest("div").find("label");
     label.addClass("active");
   });
 };
 
-var checkActive = function() {
+var checkFormActive = function() {
   $("input").each(function(i) {
     if (this.value && this.value !== "" && (this.type == "text" || this.type == "text-area" || this.type == "email" || this.type == "username")) {
       var label = $(this).closest("div").find("label");
@@ -42,7 +37,5 @@ var checkActive = function() {
     }
   });
 };
-
-
 
 $(function(){ $(document).foundation(); });
