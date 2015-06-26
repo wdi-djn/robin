@@ -19,9 +19,9 @@
             <% if (contribution.gift.can_fund == true) && (contribution.paid == false) %>
               <%= render partial: 'formStripe', locals: {contribution: contribution} %>
             <% elsif (contribution.gift.can_fund == false) %>
-              <div class='fundStatus medium-3 columns'>Awaiting More Funds</div>
+              <div class='fundStatus medium-3 small-6 columns'>Awaiting More Funds</div>
             <% else %>
-              <div class='fundPaid medium-3 columns left'>PAID</div>
+              <div class='fundPaid medium-3 small-6 columns left'>PAID</div>
             <% end %>
           </div>
           <div class='row'>
@@ -35,7 +35,7 @@
             <% if contribution.paid == false %>
               <%= render partial: 'formStripe', locals: {contribution: contribution} %>
             <% else %>
-              <div class='fundPaid medium-3 columns left'>PAID</div>
+              <div class='fundPaid medium-3 small-6 columns left'>PAID</div>
             <% end %>
           </div>
           <div class='row'>
@@ -67,11 +67,12 @@
       <% @current_user.gifts.each do |gift| %>
         <% if gift.active == true %>
           <div class='lineItem row'>
-            <div class='titleDash medium-9 columns'><%= link_to gift.title, gift_path(gift) %></div>
+            <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
+            <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
             <% if gift.can_fund == true %>
-              <div class='fundStatus medium-3 columns'>Awaiting Transfers</div>
+              <div class='fundStatus medium-3 small-6 columns'>Awaiting Transfers</div>
             <% else %>
-              <div class='fundStatus medium-3 columns'>Awaiting More Funds</div>
+              <div class='fundStatus medium-3 small-6 columns'>Awaiting More Funds</div>
             <% end %>
           </div>
           <div class='row'>
@@ -107,12 +108,12 @@
       <% @current_user.gifts.each do |gift| %>
         <% if gift.active == false %>
             <div class='lineItem row'>
-              <div class='titleDash medium-4 columns'><%= link_to gift.title, gift_path(gift) %></div>
-              <div class='money medium-5 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+              <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
+              <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
-                <div class='fundStatus medium-3 columns'>MISSED</div>
+                <div class='fundStatus medium-3 small-6 columns'>MISSED</div>
               <% else %>
-                <div class='fundFunded medium-3 columns left'>FUNDED</div>
+                <div class='fundFunded medium-3 small-6 columns left'>FUNDED</div>
               <% end %>
             </div>
           <br>
@@ -133,9 +134,9 @@
     <% @current_user.contributions.each do |contribution| %>
       <% if (contribution.gift.active == false) && (contribution.paid == true) %>
           <div class='lineItem row'>
-            <div class='titleDash medium-4 columns'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></div>
-            <div class="money medium-5 columns">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div> 
-            <div class='fundPaid medium-3 columns left'>PAID</div>
+            <div class='titleDash medium-4 small-12 columns'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></div>
+            <div class="money medium-5 small-6 columns">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div> 
+            <div class='fundPaid medium-3 small-6 columns left'>PAID</div>
           </div>
         <br>
       <% end %>
