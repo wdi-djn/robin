@@ -6,6 +6,7 @@ namespace :gifts do
       if Date.new >= gift.due_date 
         gift.active = false
         gift.save
+        GiftMailer.gift_funded_email(gift).deliver
       end
     end
   end

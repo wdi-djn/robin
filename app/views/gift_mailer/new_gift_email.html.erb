@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi <%= @gift.user.first_name %></h1>
+    <p>
+      That <%= @gift.title %>, looks expensive dude, <br>good luck with that.<br>
+
+      Title: <%= @gift.title %><br>
+      Description: <%= @gift.description %><br>
+      Price Goal: <%= @gift.price.to_f.round(2) %><br>
+      Secret Code: <%= @gift.password %><br>
+
+    </p>
+  </body>
+</html>

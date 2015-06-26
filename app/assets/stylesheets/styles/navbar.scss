@@ -1,24 +1,35 @@
 // VARIABLES
-$navbar-height: 50px;
-$menu-width: span(12);
-
+$navbar-height: 45px;
 
 // NAV
-.navbar {
-  width: 100vw;
-  position: fixed;
-  top: 0;
-  height: $navbar-height;
-  background-color: rgba(255,255,255,0.90);
-  border-bottom: $border;
-  z-index: 999;
+.top-bar {
+  z-index: 998;
+  width: 100%;
 }
 
-.navbar .main {
-  @include container;
-  position: relative;
-  display: flex; 
-  height: 100%;
+.top-bar-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    background-color: $trans-white;
+    border-top: $border;
+    border-bottom: $border;
+    margin: 0;
+    z-index: 998;
+}
+
+.content {
+  padding-top: $navbar-height;
+}
+
+.menu-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 997;
+  width: 100vw;
+  // background-color: rgba(255,255,255,0.95);
 }
 
 .menu-button {
@@ -26,52 +37,21 @@ $menu-width: span(12);
   top: 0;
   right: 0;
   padding: 0 1em;
-  height: $navbar-height;
+  height: 100%;
   border-right: $border;
   border-left: $border;
 }
 
 .menu li {
-  padding: 2em 0;
+  padding: 1em 0;
+  border-bottom: $border;
 }
 
 .menu {
-  width: 100vw;
-  position: absolute;
-  top: 0;
-  right: - 100vw;
-  // width: $menu-width;
-  height: 100vh;
-}
-
-.home-button {
-  position: absolute;
-  height: 100%;
-  // border-right: $border;
-  // border-left: $border;   
-}
-
-.site-wrapper.show-menu .site-canvas {
-  -webkit-transform: translateX(- 100vw);
-  transform: translateX(- 100vw);
-}
-
-// off canvas setup
-.site-wrapper {
-  width: 100vw;
-  position: relative;
+  display: none;
   top: $navbar-height;
-  overflow: hidden;  
-  height: 100vh;
-}
-
-.site-canvas {
-  width: 100vw;
-  position: absolute;
-  -webkit-transform: translateX(0);
-  transform: translateX(0);
-  -webkit-transition: .3s ease all;
-  transition: .3s ease all;
+  background-color: $trans-white;
+  z-index: 999;
 }
 
 .main a {

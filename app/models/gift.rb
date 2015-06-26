@@ -2,14 +2,15 @@ class Gift < ActiveRecord::Base
   belongs_to :user
 
   has_many :contributions
+  after_create :confirm_new_gift
 
   validates :title, 
   	presence: true,
-  	:length => { minimum: 5, maximum: 100 }
+  	:length => { minimum: 3, maximum: 100 }
  
   validates :description, 
   	presence: true,
-  	:length => { minimum: 5, maximum: 1000 }
+  	:length => { minimum: 3, maximum: 1000 }
   
   validates :price,
   	presence: true,
@@ -19,8 +20,27 @@ class Gift < ActiveRecord::Base
   	presence: true,
   	:length => { maximum: 50 }
 
+  validates :due_date,
+    presence: true,
+    date: { after: Proc.new { Date.today + 3},
+                message: 'is too soon! Select a day at least 4 days from now' },
+                on: :create
+
   validates :gift_url, 
-  	format: { with: /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(([0-9]{1,5})?\/.*)?\z/ix, 
-  			  message: "Please enter a valid URL" }
+    :allow_blank => true,
+  	format: { with: URI.regexp, 
+  			  message: "is not valid, please enter the full link" }
   
+
+  def confirm_new_gift
+    GiftMailer.new_gift_email(self).deliver
+    puts "//////////"
+    puts "//////////"
+    puts "//////////"
+    puts "//////////"
+    puts "//////////"
+    puts "//////////"
+    puts "NEW GIFT EMAIL SENT!"
+  end
+
 end

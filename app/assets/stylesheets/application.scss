@@ -11,6 +11,6 @@
  * file per style scope.
  *
  *= require normalize-rails
- *= require main
+ //= require foundation_and_overrides
  *= require_self
  */

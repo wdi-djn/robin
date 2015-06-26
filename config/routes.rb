@@ -25,6 +25,8 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'dashboard#show', as: 'dashboard'
     get '/stripe_connect', to: 'users#stripe_connect', as: 'stripe_connect_user'
 
+    put '/stripe_disconnect', to: 'users#stripe_disconnect', as: 'stripe_disconnect'
+
   end
 end
 #                   Prefix Verb     URI Pattern                                Controller#Action

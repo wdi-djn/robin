@@ -8,7 +8,7 @@ gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem 'normalize-rails'
-gem 'susy'
+gem 'foundation-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -41,7 +41,11 @@ gem 'stripe_event'
 gem 'omniauth-stripe-connect'
 gem 'devise'
 gem 'dotenv-rails'
+
+gem 'date_validator'
+
 gem 'whenever', :require => false
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -64,6 +68,7 @@ group :development, :test do
 
   # Will generate dummy data
   gem 'ffaker'
+
 
 end
 

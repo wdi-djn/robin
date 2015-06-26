@@ -13,6 +13,10 @@ class GiftsController < ApplicationController
   def show
     # check if current user has password to view gift
     # if current_user
+    if @gift.password == nil || ""
+      return @contribution = Contribution.new
+    end
+
     unless session[@gift_id] == @gift.password
       # Don't redirect if current user is gift creator
       return @contribution = Contribution.new if current_user == @gift.user
@@ -104,6 +108,6 @@ class GiftsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def gift_params
-      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url, :password)
+      params.require(:gift).permit(:title, :description, :price, :due_date, :recipient, :user_id, :hashed_id, :gift_url, :password, :current_total)
     end
 end

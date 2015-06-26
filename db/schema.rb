@@ -20,11 +20,12 @@ ActiveRecord::Schema.define(version: 20150625065249) do
     t.integer  "user_id"
     t.integer  "gift_id"
     t.decimal  "amount"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "stripeToken"
     t.string   "stripeTokenType"
     t.string   "stripeEmail"
+    t.boolean  "paid",            default: false
   end
 
   create_table "gifts", force: :cascade do |t|
@@ -35,11 +36,12 @@ ActiveRecord::Schema.define(version: 20150625065249) do
     t.datetime "due_date"
     t.string   "recipient"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "password"
     t.decimal  "current_total"
     t.boolean  "active",        default: true
+    t.boolean  "can_fund",      default: false
   end
 
   create_table "users", force: :cascade do |t|

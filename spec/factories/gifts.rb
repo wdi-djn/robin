@@ -8,7 +8,6 @@ FactoryGirl.define do
   	gift_url { FFaker::Internet.http_url}
   	due_date { FFaker::Time.date}
   	recipient { FFaker::Name.name}
-  	hashed_id { gift_url }
   end
 
   # a factory for a gift that already has relationship to a user
@@ -20,7 +19,6 @@ FactoryGirl.define do
   	gift_url { FFaker::Internet.http_url}
   	due_date { FFaker::Time.date}
   	recipient { FFaker::Name.name}
-  	hashed_id { gift_url }
   end
 
 
