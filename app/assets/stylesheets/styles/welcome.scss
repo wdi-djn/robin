@@ -2,15 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-                body {
-	font-family: "Open Sans", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
-	font-weight: 200;
-	font-size: 20px;
-}
 
 .parallax-background {
-	background-color: rgb(229,122,68);
-	height: 620px;
+	background-color: $orange;
+	height: 70vh;
 	background-repeat: no-repeat;
 	-webkit-background-size: cover;
   	-moz-background-size: cover;
@@ -21,7 +16,7 @@
 }
 
 .intro-text {
-	font-size: 50px;
+	font-size: 3em;
 	color: #fff;
 	text-align: center;
 	margin-top: 15%;
@@ -29,9 +24,12 @@
 .parallax-content {
 	max-width: 100%;
 	position: relative;
-	top: 500px;
+	top: 70vh;
 	padding: 50px;
 	font-size: 20px;
 	background-color: #fff;
 }
-           
+      
+.button {
+background-color: $purple;
+}
