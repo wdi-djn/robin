@@ -1,0 +1,102 @@
+
+
+.lineItem {
+  padding-top: 6px;
+  border-top: 1px solid $light-gray;
+}
+
+.welcomeDash{
+  font-weight: 500
+
+}
+
+.titleDash {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.groupTitle{
+  font-size: 23px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.subGroupTitle{
+  font-size: 20px;
+}
+
+
+
+.dashboardGroup form{
+  padding: 0;
+  margin: 0
+}
+
+.paymentButton{
+  margin-bottom: -16px;
+}
+
+.fundPaid{
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: $lime-green;
+  height: 33px;
+  width: 90px;
+  line-height: 30px;
+  border: 1px solid #5CE65C;
+  border-radius: 5px;
+  font-weight: 400;
+  color: gray;
+  letter-spacing: 7px;
+}
+
+.fundFunded{
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: $lime-green;
+  height: 33px;
+  width: 128px;
+  line-height: 30px;
+  border: 1px solid #5CE65C;
+  border-radius: 5px;
+  font-weight: 400;
+  color: gray;
+  letter-spacing: 7px;
+}
+
+.fundPending{
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: #D8D8D8;
+  height: 33px;
+  width: 160px;
+  line-height: 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-weight: 400;
+  color: gray;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#pendingTransfer{
+  width: 188px;
+}
+
+.fundMiss{
+  margin-left: 15px;
+  margin-bottom: 10px;
+  background-color: #D8D8D8;
+  height: 33px;
+  width: 126px;
+  line-height: 30px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  font-weight: 400;
+  color: gray;
+  letter-spacing: 7px;
+}
+
+.money {
+  margin-bottom: 10px;
+}

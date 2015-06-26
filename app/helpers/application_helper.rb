@@ -1,4 +1,5 @@
 module ApplicationHelper
+  include DashboardHelper
 
  def resource_name
     :user

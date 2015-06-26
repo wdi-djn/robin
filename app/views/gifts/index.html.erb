@@ -21,7 +21,7 @@
       <tr>
         <td><%= gift.title %></td>
         <td><%= gift.description %></td>
-        <td><%= gift.price %></td>
+        <td><%= number_to_currency(gift.price.to_d/100) %></td>
         <td><%= gift.gift_url %></td>
         <td><%= gift.due_date %></td>
         <td><%= gift.recipient %></td>

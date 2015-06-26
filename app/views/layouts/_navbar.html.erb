@@ -3,7 +3,7 @@
     <nav class="top-bar" data-topbar role="navigation">
       <ul class="title-area">
         <li class="name">
-          <h1><%= link_to "Home", root_path %></h1>
+          <a href="/"><img src="../../assets/robin_logo2.svg" alt="Robin Logo" /></a>
         </li>
          <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       </ul>
@@ -11,11 +11,11 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class="has-dropdown menu-button">
+          <li class="menu-button">
             <% if current_user %> 
-              <a href="#">Menu</a>
+              <a href="#" class="user-avatar"><%= image_tag gravatar_url(current_user.email, 100), alt: "user_avatar", class: "user-avatar" %></a>
             <% else %>
-              <a href="#">Sign In</a>
+              <a href="#" class"sign-in"><b>Sign In</ b></a>
             <% end %>
           </li>
         </ul>
@@ -30,18 +30,25 @@
     <div class="row">
       <ul class="menu medium-6 large-4 columns right">
           <% if current_user == nil %>
-              <!-- LOGIN FORM STARTS -->
-              <!--  move to partial -->
+              <!-- LOGIN FORM IF NOT LOGGED IN -->
               <%= render "/devise/sessions/form" %>
                     
-              <!-- LOGIN FORM ENDS -->
             <li>
               <%= link_to "Create Account", new_user_registration_path %>    
             </li>
           <% else %>
-            <li>
-              <%= link_to "Profile", show_user_path(current_user) %>
-            </li>
+            <!-- USER PROFILE IF LOGGED IN -->
+            <%= current_user.first_name %> <%= current_user.last_name %>
+            <%= current_user.username %>
+            <%= current_user.email %>
+            
+            <% if current_user.publishable_key %>
+              <div class="stripeStatus">stripe connected!</div>
+            <% end %>
+            
+
+
+
             <li>  
               <%= link_to "Create Gift Group", new_gift_path %>
             </li>

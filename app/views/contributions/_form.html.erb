@@ -11,15 +11,21 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :amount %><br>
+<div class="row">
+  <div class="field small-12 columns right">
+    <%= f.label :amount %>
     <%= f.text_field :amount %>
+     <%= hidden_field(:contribution, :gift_id, value: @gift.id) %>
   </div>
+</div>
 
-  <%= hidden_field(:contribution, :gift_id, value: @gift.id) %>
-
-
-  <div class="actions">
-    <%= f.submit %>
+<div class="row">
+  <div class="small-12 columns right">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
+</div>
+
+
 <% end %>

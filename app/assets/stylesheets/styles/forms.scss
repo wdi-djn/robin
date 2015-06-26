@@ -14,6 +14,12 @@ input, textarea {
   }
 }
 
+input{
+  background:$purple;
+  color: white;
+  font-weight: 400;
+}
+
 textarea {
   border: $border;
   resize: vertical;
@@ -53,4 +59,17 @@ label {
   -webkit-transform: translateX(-2em) translateY(-2em);
   transform: translateX(-.3em) translateY(-2em);
   font-size: .8em;
+}
+
+.sign-in b{
+  font-weight:400;
+}
+
+.menu-container a{
+  font-weight:400;
+}
+
+.checkbox{
+  margin-top: 10px;
+  padding: 0px;
 }

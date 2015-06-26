@@ -1,0 +1,21 @@
+
+<div class='money medium-12 small-6 columns'>
+Time: 
+<% timeLeft = gift.due_date - Time.now %>
+<% minsLeft = timeLeft/60 %>
+<% hoursLeft = minsLeft/60 %>
+<% daysLeft = hoursLeft/24 %>
+<% if daysLeft < 1 %>
+  <% if hoursLeft < 1 %>
+    <% if minsLeft > 0 %>
+      <%= minsLeft.round %> minutes remaining
+    <% else %>
+      Contribution Over
+    <% end %>
+  <% else %>
+    <%= hoursLeft.round %> hours remaining
+  <% end %>
+<% else %>
+  <%= daysLeft.round %> days remaining
+<% end %>
+</div>

@@ -26,6 +26,7 @@ class ContributionsController < ApplicationController
   # POST /contributions.json
   def create
     @contribution = current_user.contributions.new(contribution_params)
+    @contribution.update(:amount => @contribution.amount*100)
     if @contribution.save 
       # adds the contribution amount to the current total in gift
       specificGift = Gift.find(@contribution.gift_id)
@@ -37,7 +38,7 @@ class ContributionsController < ApplicationController
         specificGift.update(:can_fund => true)
       end
       
-      redirect_to contributions_path
+      redirect_to dashboard_path
     else
       redirect_to new_contribution_path
     end
@@ -65,9 +66,9 @@ class ContributionsController < ApplicationController
           :currency    => 'usd'
       )
       @contribution.update(:paid => true)
-      redirect_to gifts_path
+      redirect_to dashboard_path
     else
-      redirect_to gifts_path
+      redirect_to dashboard_path
     end
   end
 
