@@ -1,4 +1,4 @@
-<div class='paymentButton medium-3 columns'>
+<div class='paymentButton medium-3 small-6 columns'>
 <%= form_for contribution, :url => update_gift_contribution_path(contribution), method: :put do |f| %>
   <%= hidden_field(:contribution, :id, value: contribution.id) %>
   <script
