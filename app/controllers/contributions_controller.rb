@@ -65,9 +65,9 @@ class ContributionsController < ApplicationController
           :currency    => 'usd'
       )
       @contribution.update(:paid => true)
-      redirect_to gifts_path
+      redirect_to dashboard_path
     else
-      redirect_to gifts_path
+      redirect_to dashboard_path
     end
   end
 

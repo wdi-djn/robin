@@ -5,6 +5,9 @@ $navbar-height: 45px;
 .top-bar {
   z-index: 998;
   width: 100%;
+  .user-avatar {
+    height: $navbar-height;
+  }
 }
 
 .top-bar-bg {
@@ -36,10 +39,28 @@ $navbar-height: 45px;
   position: absolute;
   top: 0;
   right: 0;
-  padding: 0 1em;
   height: 100%;
   border-right: $border;
   border-left: $border;
+  padding: 0;
+  margin: 0;
+  .sign-in {
+    padding: 0 1em;
+  }
+}
+
+// REMOVES LEFT PADDING ON AVATAR
+@media only screen and (min-width: 40.0625em) {
+  .top-bar-section li:not(.has-form) a:not(.button)  {
+      // line-height: 0;
+    padding: 0 0;
+  }
+}
+
+// Dropdown
+ul.menu.medium-6.large-4.columns.right {
+  text-align: right;
+  // padding-right: 0;
 }
 
 .menu li {
@@ -52,6 +73,7 @@ $navbar-height: 45px;
   top: $navbar-height;
   background-color: $trans-white;
   z-index: 999;
+  border: $border;
 }
 
 .main a {
