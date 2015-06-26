@@ -1,13 +1,6 @@
 class Gift < ActiveRecord::Base
   belongs_to :user
 
-  def active?
-    if self.current_total >= self.price 
-      self.active = false
-      self.save
-    end
-  end
-
   has_many :contributions
 
   validates :title, 
