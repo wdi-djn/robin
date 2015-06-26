@@ -11,11 +11,11 @@
       <section class="top-bar-section">
         <!-- Right Nav Section -->
         <ul class="right">
-          <li class="has-dropdown menu-button">
+          <li class="menu-button">
             <% if current_user %> 
-              <a href="#"><%= image_tag gravatar_url(current_user.email, 100), alt: "" %></a>
+              <a href="#" class="user-avatar"><%= image_tag gravatar_url(current_user.email, 100), alt: "user_avatar", class: "user-avatar" %></a>
             <% else %>
-              <a href="#">Sign In</a>
+              <a href="#" class"sign-in">Sign In</a>
             <% end %>
           </li>
         </ul>
