@@ -44,6 +44,7 @@ class GiftsController < ApplicationController
   # POST /gifts.json
   def create
     @gift = current_user.gifts.new(gift_params)
+    @gift.update(:price => @gift.price*100)
 
     respond_to do |format|
       if @gift.save
@@ -61,6 +62,7 @@ class GiftsController < ApplicationController
   def update
     respond_to do |format|
       if @gift.update(gift_params)
+        @gift.update(:price => @gift.price*100)
         format.html { redirect_to @gift, notice: 'Gift was successfully updated.' }
         format.json { render :show, status: :ok, location: @gift }
       else

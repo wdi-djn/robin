@@ -16,7 +16,7 @@
 
 <p>
   <strong>Price:</strong>
-  <%= @gift.price %>
+  <%= number_to_currency(@gift.price.to_d/100) %>
 </p>
 
 <p>

@@ -22,4 +22,4 @@ Time:
 <% end %>
 </div>
 
-<div class='money medium-3 columns'>Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
+<div class='money medium-3 columns'>Goal: <%= number_to_currency(contribution.gift.current_total/100, unit: "$") %>/<%= number_to_currency(contribution.gift.price/100, unit: "$")%></div>

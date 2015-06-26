@@ -68,7 +68,7 @@
         <% if gift.active == true %>
           <div class='lineItem row'>
             <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
-            <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
+            <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/100, unit: "$") %>/<%= number_to_currency(gift.price.to_d/100, unit: "$")%></div>
             <% if (gift.can_fund == true) && (all_paid?(gift) == false) %>
               <div class='fundPending medium-3 small-6 columns left' id='pendingTransfer'>Pending Transfers</div>
             <% else %>
@@ -137,7 +137,7 @@
       <% if (contribution.gift.active == false) && (contribution.paid == true) %>
           <div class='lineItem row'>
             <div class='titleDash medium-4 small-12 columns'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></div>
-            <div class="money medium-5 small-6 columns">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div> 
+            <div class="money medium-5 small-6 columns">Your Contribution: <%= number_to_currency(contribution.amount/100) %></div> 
             <div class='fundPaid medium-3 small-6 columns left'>PAID</div>
           </div>
         <br>
