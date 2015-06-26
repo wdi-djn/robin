@@ -38,9 +38,9 @@
             </li>
           <% else %>
             <!-- USER PROFILE IF LOGGED IN -->
-            <%= current_user.first_name %> <%= current_user.last_name %>
-            <%= current_user.username %>
-            <%= current_user.email %>
+
+            <%= link_to current_user.username, show_user_path(current_user) %>
+
             
             <% if current_user.publishable_key %>
               <div class="stripeStatus">stripe connected!</div>

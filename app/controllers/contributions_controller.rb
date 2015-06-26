@@ -37,7 +37,7 @@ class ContributionsController < ApplicationController
         specificGift.update(:can_fund => true)
       end
       
-      redirect_to contributions_path
+      redirect_to dashboard_path
     else
       redirect_to new_contribution_path
     end
