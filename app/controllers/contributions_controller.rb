@@ -26,6 +26,7 @@ class ContributionsController < ApplicationController
   # POST /contributions.json
   def create
     @contribution = current_user.contributions.new(contribution_params)
+    @contribution.update(:amount => @contribution.amount*100)
     if @contribution.save 
       # adds the contribution amount to the current total in gift
       specificGift = Gift.find(@contribution.gift_id)
