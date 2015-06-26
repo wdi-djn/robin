@@ -4,7 +4,7 @@
 
 <div class='dashboardGroup'>
   <div class='row'>
-    <h2 class="groupTitle columns">Gifts to Fund</h2>
+    <h5 class="groupTitle columns">Gifts to Fund</h5>
   </div>
   <% if @current_user.contributions.count == 0 %>
     <div class='row'>
@@ -56,7 +56,7 @@
 
 <div class='dashboardGroup'>
   <div class='row'>
-    <h2 class="groupTitle columns">Gift Groups You Started</h2>
+    <h5 class="groupTitle columns">Gift Groups You Started</h5>
   </div>
   <% if @current_user.gifts.count == 0 %>
     <div class='row'>
@@ -90,7 +90,7 @@
 
 <div class='dashboardGroup'>
   <div class='row'>
-    <h2 class="groupTitle columns">Archive</h2>
+    <h5 class="groupTitle columns">Archive</h5>
   </div>
   <% if @current_user.gifts.count == 0 && @current_user.contributions.count == 0 %>
     <div class='row'>
@@ -101,7 +101,7 @@
 
     <% if @current_user.gifts.count != 0 %>
       <div class='row'>
-        <h4 class="subGroupTitle columns">Previous Gifting Groups</h4>
+        <h6 class="subGroupTitle columns">Previous Gifting Groups</h6>
       </div>
       <div class='dashboardGroup'>
       <div class='giftGroup'>
@@ -129,7 +129,7 @@
 <div class='dashboardGroup'>
   <% if @current_user.gifts.count != 0 %>
     <div class='row'>
-      <h4 class="subGroupTitle columns">Paid Contributions</h4>
+      <h6 class="subGroupTitle columns">Paid Contributions</h6>
     </div>
 
     <div class='giftGroup'>
