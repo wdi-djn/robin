@@ -69,7 +69,7 @@
           <div class='lineItem row'>
             <div class='titleDash medium-4 small-12 columns'><%= link_to gift.title, gift_path(gift) %></div>
             <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
-            <% if gift.can_fund == true %>
+            <% if (gift.can_fund == true) && (all_paid?(gift) == false) %>
               <div class='fundPending medium-3 small-6 columns left' id='pendingTransfer'>Pending Transfers</div>
             <% else %>
               <div class='fundPending medium-3 small-6 columns left'>Pending Funds</div>
@@ -112,6 +112,8 @@
               <div class='money medium-5 small-6 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
                 <div class='fundMiss medium-3 small-6 columns left'>MISSED</div>
+              <% elsif all_paid?(gift) %>
+                <div class='fundFunded medium-3 small-6 columns left'>FUNDED</div>
               <% else %>
                 <div class='fundFunded medium-3 small-6 columns left'>FUNDED</div>
               <% end %>
@@ -147,4 +149,3 @@
   <% end %>
 <% end %>
 
-<%= console %>
