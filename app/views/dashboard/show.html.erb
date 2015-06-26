@@ -103,25 +103,22 @@
         <h4 class="subGroupTitle columns">Previous Gifting Groups</h4>
       </div>
       <div class='dashboardGroup'>
+      <div class='giftGroup'>
       <% @current_user.gifts.each do |gift| %>
         <% if gift.active == false %>
-          <div class='giftGroup'>
             <div class='lineItem row'>
-              <div class='titleDash medium-9 columns'><%= link_to gift.title, gift_path(gift) %></div>
+              <div class='titleDash medium-4 columns'><%= link_to gift.title, gift_path(gift) %></div>
+              <div class='money medium-5 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
               <% if gift.current_total < gift.price %>
                 <div class='fundStatus medium-3 columns'>MISSED</div>
               <% else %>
                 <div class='fundFunded medium-3 columns left'>FUNDED</div>
               <% end %>
             </div>
-            <div class='row'>
-              <div class'medium-9 columns'>testesest</div>
-              <div class='money medium-3 columns'>Goal: <%= number_to_currency(gift.current_total/1000, unit: "$") %>/<%= number_to_currency(gift.price.to_d/1000, unit: "$")%></div>
-            </div>
-          </div>
           <br>
         <% end %>
       <% end %>
+      </div>
       </div>
     <% end %>
 </div>
@@ -131,22 +128,19 @@
     <div class='row'>
       <h4 class="subGroupTitle columns">Paid Contributions</h4>
     </div>
+
+    <div class='giftGroup'>
     <% @current_user.contributions.each do |contribution| %>
       <% if (contribution.gift.active == false) && (contribution.paid == true) %>
-        <div class='giftGroup'>
           <div class='lineItem row'>
             <div class='titleDash medium-4 columns'><%= link_to contribution.gift.title, gift_path(contribution.gift) %></div>
             <div class="money medium-5 columns">Your Contribution: <%= number_to_currency(contribution.amount/1000) %></div> 
+            <div class='fundPaid medium-3 columns left'>PAID</div>
           </div>
-
-          <div class='row'>
-            <div class="money columns">Goal: <%= number_to_currency(contribution.gift.current_total/1000, unit: "$") %>/<%= number_to_currency(contribution.gift.price/1000, unit: "$")%></div>
-          </div>
-
-        </div>
         <br>
       <% end %>
     <% end %>
+    </div>
     <br><br>
     </div>
   <% end %>
