@@ -5,6 +5,7 @@ class Gift < ActiveRecord::Base
     if Date.new >= self.due_date 
       self.active = false
       self.save
+      GiftMailer.gift_funded_email(self).deliver
     end
   end
 
@@ -39,7 +40,7 @@ class Gift < ActiveRecord::Base
   			  message: "is not valid, please enter the full link" }
   
 
-    def confirm_new_gift
+  def confirm_new_gift
     GiftMailer.new_gift_email(self).deliver
     puts "//////////"
     puts "//////////"
