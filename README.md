@@ -34,6 +34,7 @@ Robin is a gift-giving platform. Inspired by the crowdfuning payment model, Robi
 
 ## APIs Used
 - Stripe
+- Gravatar
 
 ## Scope
 - A user can create an account/login
