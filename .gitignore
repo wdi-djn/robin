@@ -14,3 +14,5 @@ Gemfile.lock
 /log/*
 !/log/.keep
 /tmp
+
+.DS_Store
