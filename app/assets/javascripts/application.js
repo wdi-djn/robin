@@ -22,12 +22,15 @@ $(document).on("page:change", function() {
   checkActive();
 });
 
+
 var animateForm = function() {
   $("input" || "textarea").one("keypress", function() {
     var label = $(this).closest("div").find("label");
     label.addClass("active");
   });
 };
+
+
 
 var checkFormActive = function() {
   $("input").each(function(i) {
